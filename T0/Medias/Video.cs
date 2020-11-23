@@ -8,12 +8,13 @@ namespace T0.Medias
 
         public int Bitrate { get; set; }
 
-        public Video(string name) : base(name)
+        public Video(string name, Resolution resolution, int bitrate) : base(name)
         {
-            
+            Resolution = resolution;
+            Bitrate = bitrate;
         }
 
-        public new void Play()
+        public override void Play()
         {
             Console.WriteLine($"Playing video {Name} with resolution {Resolution} and bitrate {Bitrate}");
         }

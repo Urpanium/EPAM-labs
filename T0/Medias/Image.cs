@@ -8,13 +8,14 @@ namespace T0.Medias
         public Resolution Resolution { get; set; }
         public float Compression { get; set; }
 
-        public Image(string name) : base(name)
+        public Image(string name, Resolution resolution, float compression) : base(name)
         {
-            
+            Resolution = resolution;
+            Compression = compression;
         }
         
 
-        public new void Play()
+        public override void Play()
         {
             Console.WriteLine($"Showing image {Name} with resolution {Resolution} and compression {Compression}");
         }

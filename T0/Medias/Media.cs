@@ -11,9 +11,6 @@ namespace T0
             Name = name;
         }
 
-        public void Play()
-        {
-            Console.WriteLine("Default media play");
-        }
+        public abstract void Play();
     }
 }

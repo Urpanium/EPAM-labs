@@ -7,12 +7,13 @@ namespace T0.Medias
         public float Length { get; set; }
         public int Bitrate { get; set; }
 
-        public Sound(string name) : base(name)
+        public Sound(string name, float length, int bitrate) : base(name)
         {
-            
+            Length = length;
+            Bitrate = bitrate;
         }
 
-        public new void Play()
+        public override void Play()
         {
             Console.WriteLine($"Playing sound {Name} with length {Length} and bitrate {Bitrate}");
         }
