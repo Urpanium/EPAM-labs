@@ -4,15 +4,15 @@ namespace T0.Medias
 {
     public class MediaPlayer
     {
-
         //public float PlayDelay { get; set; }
 
-        private Queue<Media> Queue;
+        private readonly Queue<Media> Queue;
 
         public MediaPlayer()
         {
             Queue = new Queue<Media>();
         }
+
         public void PlayList(List<Media> medias)
         {
             //LINQ?????
@@ -20,7 +20,6 @@ namespace T0.Medias
             {
                 Queue.Enqueue(media);
             }
-            
         }
 
         public void PlayAll()
@@ -30,8 +29,7 @@ namespace T0.Medias
                 media.Play();
             }
         }
-        
-        
+
         public void Play(Media media)
         {
             Clear();
@@ -47,6 +45,5 @@ namespace T0.Medias
         {
             Queue.Clear();
         }
-        
     }
 }

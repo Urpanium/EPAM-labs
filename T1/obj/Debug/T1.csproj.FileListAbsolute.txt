@@ -1,0 +1,6 @@
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T1\obj\Debug\T1.csprojAssemblyReference.cache
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T1\obj\Debug\T1.csproj.CoreCompileInputs.cache
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T1\bin\Debug\T1.exe
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T1\bin\Debug\T1.pdb
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T1\obj\Debug\T1.exe
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T1\obj\Debug\T1.pdb
