@@ -1,19 +1,15 @@
-﻿
-
-using T1.Enums;
+﻿using T1.Enums;
 
 namespace T1.GiftComponents.ToyComponent
 {
     public class ToyComponent : GiftItemComponent
     {
-        
-        public Composition Composition{ get; set; }
-
         public ToyComponent() : base()
         {
-            
         }
-        public ToyComponent(string name, string manufacturer, float weight, Composition composition, PriceType priceType,
+
+        public ToyComponent(string name, string manufacturer, float weight, Composition composition,
+            PriceType priceType,
             PriceRoundingRule priceRoundingRule) :
             base(name, manufacturer, weight, priceType, priceRoundingRule)
         {
@@ -24,5 +20,7 @@ namespace T1.GiftComponents.ToyComponent
             this.priceType = priceType;
             this.priceRoundingRule = priceRoundingRule;
         }
+
+        public Composition Composition { get; set; }
     }
 }

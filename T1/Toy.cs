@@ -25,27 +25,7 @@ namespace T1
 
         public new List<GiftItemComponent> Components;
 
-        public new float GetWeight()
-        {
-            float sum = 0.0f;
-            foreach (GiftItemComponent component in Components)
-            {
-                sum += component.GetWeight();
-            }
-
-            return sum;
-        }
-
-        /*public float GetPrice()
-        {
-            float sum = 0.0f;
-            foreach (GiftItemComponent component in Components)
-            {
-                sum += component.GetPrice();
-            }
-
-            return sum;
-        }*/
+        
 
 
         public new ToyComponent this[int index]
@@ -70,6 +50,17 @@ namespace T1
                 throw new IndexOutOfRangeException(
                     $"Component index ({index}) must be less than {Components.Count} and greater or equal to 0.");
             }
+        }
+        
+        public new float GetWeight()
+        {
+            float sum = 0.0f;
+            foreach (GiftItemComponent component in Components)
+            {
+                sum += component.GetWeight();
+            }
+
+            return sum;
         }
     }
 }

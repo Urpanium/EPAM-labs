@@ -4,7 +4,7 @@ using T1.Enums;
 
 namespace T1
 {
-    //это что бля?
+    
     public abstract class GiftStuffBase
     {
         public GiftStuffBase()
@@ -15,34 +15,9 @@ namespace T1
         public string Name { get; set; }
         public string Manufacturer { get; set; }
 
-        public List<GiftStuffBase> Components;
+        public List<GiftStuffBase> Components { get; set; }
         
-        /*public float GetWeight { get; set; }*/
-
-        /*public PriceType priceType { get; set; }
-
-        public PriceRoundingRule priceRoundingRule { get; set; }
-
-        public float RawPrice { get; set; }*/
         
-        /*public float CalculatedPrice
-        {
-            get
-            {
-                switch (priceType)
-                {
-                    case PriceType.PerKilo:
-                    {
-                        return RoundPrice(Weight * RawPrice);
-                    }
-                    default:
-                    {
-                        return RoundPrice(RawPrice);
-                    }
-                }
-            }
-        }*/
-        //override in children
         public float GetWeight()
         {
             float sum = 0.0f;
@@ -54,7 +29,6 @@ namespace T1
             return sum;
         }
 
-        //override in children
         public float GetPrice()
         {
             float sum = 0.0f;

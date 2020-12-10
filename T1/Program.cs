@@ -9,7 +9,7 @@ namespace T1
         static void Main(string[] args)
         {
             Gift gift = MakeGift();
-            Console.WriteLine(gift);
+            
         }
 
         static Gift MakeGift()
@@ -34,9 +34,6 @@ namespace T1
 
             Food sourSweet = new Food("Sour Sweet", "SOUR MAN INC.", sourCandy);
             Food chocolateBar = new Food("Chocolate Bar", "Maestro Pereigral & Unichtozhil INC.", chocolate);
-            
-            //gift.Add(group);
-            //gift.Add(chocolateCollection);
             return gift;
         }
 

@@ -6,6 +6,20 @@ namespace T1.GiftComponents
 {
     public abstract class GiftItemComponent : GiftStuffBase
     {
+        public GiftItemComponent()
+        {
+        }
+
+        public GiftItemComponent(string name, string manufacturer, float weight, PriceType priceType,
+            PriceRoundingRule priceRoundingRule)
+        {
+            Name = name;
+            Manufacturer = manufacturer;
+            Weight = weight;
+            this.priceType = priceType;
+            this.priceRoundingRule = priceRoundingRule;
+        }
+
         public PriceType priceType { get; set; }
 
         public PriceRoundingRule priceRoundingRule { get; set; }
@@ -28,28 +42,7 @@ namespace T1.GiftComponents
                 }
             }
         }
-        /*public float CalculatedPrice
-        {
-            get
-            {
-                
-            }
-        }*/
 
-
-        public GiftItemComponent()
-        {
-        }
-
-        public GiftItemComponent(string name, string manufacturer, float weight, PriceType priceType,
-            PriceRoundingRule priceRoundingRule)
-        {
-            Name = name;
-            Manufacturer = manufacturer;
-            Weight = weight;
-            this.priceType = priceType;
-            this.priceRoundingRule = priceRoundingRule;
-        }
 
         public override string ToString()
         {

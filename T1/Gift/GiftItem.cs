@@ -9,37 +9,9 @@ namespace T1
     
     public abstract class GiftItem: GiftStuffBase
     {
-        /*public string Name{ get; set; }
-        public string Manufacturer{ get; set; }
-*/
         
         public new List<GiftItemComponent> Components;
 
-        /*public float GetWeight()
-        {
-                float sum = 0.0f;
-                foreach (GiftItemComponent component in Components)
-                {
-                    sum += component.Weight;
-                }
-
-                return sum;
-            
-        }*/
-
-        /*public float GetPrice()
-        {
-            
-            
-                float sum = 0;
-                foreach (GiftItemComponent component in Components)
-                {
-                    sum += component.GetPrice();
-                }
-
-                return sum;
-            
-        }*/
         public int ComponentsCount => Components.Count;
 
         public GiftItemComponent this[int index]
@@ -71,19 +43,13 @@ namespace T1
             
         }
         
-        public GiftItem(string name, string manufacturer, GiftItemComponent initComponent)
+        public GiftItem(string name, string manufacturer, GiftItemComponent initComponent = null)
         {
             Name = name;
             Manufacturer = manufacturer;
             Components = new List<GiftItemComponent> {initComponent};
         }
 
-        protected GiftItem(string name, string manufacturer)
-        {
-            Name = name;
-            Manufacturer = manufacturer;
-            Components = new List<GiftItemComponent>();
-        }
 
         public override string ToString()
         {

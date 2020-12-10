@@ -13,12 +13,6 @@ namespace T1
             Components = new List<GiftItem>();
         }
 
-        public GiftItem this[int index]
-        {
-            get { return Components[index]; }
-            set { Components[index] = value; }
-        }
-
         public bool IsEmpty()
         {
             return Components.Count == 0;

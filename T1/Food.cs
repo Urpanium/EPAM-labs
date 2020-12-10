@@ -1,42 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using T1.GiftComponents;
 
 namespace T1
 {
     public class Food : GiftItem
     {
-        
         public new List<GiftItemComponent> Components;
-
-        public new float Weight
+        
+        public Food() : base()
         {
-            get
-            {
-                float sum = 0.0f;
-                foreach (GiftItemComponent component in Components)
-                {
-                    sum += component.GetWeight();
-                }
-
-                return sum;
-            }
+            Components = new List<GiftItemComponent>();
         }
 
-        public new float Price
+        public Food(string name, string manufacturer, GiftItemComponent initComponent) : base(name, manufacturer,
+            initComponent)
         {
-            get
-            {
-                
-                float sum = 0.0f;
-                foreach (GiftItemComponent component in Components)
-                {
-                    sum += component.GetPrice();
-                }
+            Components = new List<GiftItemComponent>();
+        }
 
-                return sum;
-            }
+        protected Food(string name, string manufacturer) : base(name, manufacturer)
+        {
+            Components = new List<GiftItemComponent>();
         }
 
         public float Sweetness
@@ -117,22 +102,6 @@ namespace T1
                 throw new IndexOutOfRangeException(
                     $"Component index ({index}) must be less than {Components.Count} and greater or equal to 0.");
             }
-        }
-
-        public Food() : base()
-        {
-            Components = new List<GiftItemComponent>();
-        }
-
-        public Food(string name, string manufacturer, GiftItemComponent initComponent) : base(name, manufacturer,
-            initComponent)
-        {
-            Components = new List<GiftItemComponent>();
-        }
-
-        protected Food(string name, string manufacturer) : base(name, manufacturer)
-        {
-            Components = new List<GiftItemComponent>();
         }
     }
 }
