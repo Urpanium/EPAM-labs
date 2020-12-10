@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using T1.Enums;
+﻿using System.Collections.Generic;
 
 namespace T1
 {
@@ -9,7 +7,7 @@ namespace T1
     {
         public GiftStuffBase()
         {
-            
+            Components = new List<GiftStuffBase>();
         }
 
         public string Name { get; set; }

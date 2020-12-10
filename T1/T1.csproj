@@ -41,8 +41,6 @@
       <Compile Include="Enums\PriceRoundingRule.cs" />
       <Compile Include="Enums\PriceType.cs" />
       <Compile Include="GiftComponents\GiftItemComponent.cs" />
-      <Compile Include="GiftComponents\InvalidPriceException.cs" />
-      <Compile Include="GiftComponents\InvalidWeightException.cs" />
       <Compile Include="GiftComponents\EatableComponent\FoodComponent.cs" />
       <Compile Include="GiftComponents\EatableComponent\Taste.cs" />
       <Compile Include="GiftComponents\ToyComponent\Composition.cs" />

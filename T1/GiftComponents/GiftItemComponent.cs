@@ -11,11 +11,12 @@ namespace T1.GiftComponents
         }
 
         public GiftItemComponent(string name, string manufacturer, float weight, PriceType priceType,
-            PriceRoundingRule priceRoundingRule)
+            PriceRoundingRule priceRoundingRule, float rawPrice)
         {
             Name = name;
             Manufacturer = manufacturer;
             Weight = weight;
+            RawPrice = rawPrice;
             this.priceType = priceType;
             this.priceRoundingRule = priceRoundingRule;
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace T1.GiftComponents.ToyComponent
+﻿namespace T1.GiftComponents.ToyComponent
 {
     public class Composition
     {

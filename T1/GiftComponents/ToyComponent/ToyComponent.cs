@@ -6,19 +6,15 @@ namespace T1.GiftComponents.ToyComponent
     {
         public ToyComponent() : base()
         {
+            Composition = new Composition(0.0f, 0.0f, 0.0f, 0.0f);
         }
 
         public ToyComponent(string name, string manufacturer, float weight, Composition composition,
             PriceType priceType,
-            PriceRoundingRule priceRoundingRule) :
-            base(name, manufacturer, weight, priceType, priceRoundingRule)
+            PriceRoundingRule priceRoundingRule, float rawPrice) :
+            base(name, manufacturer, weight, priceType, priceRoundingRule, rawPrice)
         {
-            Name = name;
-            Manufacturer = manufacturer;
-            Weight = weight;
             Composition = composition;
-            this.priceType = priceType;
-            this.priceRoundingRule = priceRoundingRule;
         }
 
         public Composition Composition { get; set; }

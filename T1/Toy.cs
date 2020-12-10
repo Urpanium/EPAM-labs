@@ -12,15 +12,10 @@ namespace T1
             Components = new List<GiftItemComponent>();
         }
 
-        public Toy(string name, string manufacturer, GiftItemComponent initComponent) : base(name, manufacturer,
+        public Toy(string name, string manufacturer, GiftItemComponent initComponent = null) : base(name, manufacturer,
             initComponent)
         {
-            Components = new List<GiftItemComponent>();
-        }
-
-        protected Toy(string name, string manufacturer) : base(name, manufacturer)
-        {
-            Components = new List<GiftItemComponent>();
+            Components = new List<GiftItemComponent>(){initComponent};
         }
 
         public new List<GiftItemComponent> Components;
@@ -28,13 +23,13 @@ namespace T1
         
 
 
-        public new ToyComponent this[int index]
+        public new GiftItemComponent this[int index]
         {
             get
             {
                 if (index < Components.Count && index >= 0)
                 {
-                    return (ToyComponent) Components[index];
+                    return Components[index];
                 }
 
                 throw new IndexOutOfRangeException(
@@ -50,17 +45,6 @@ namespace T1
                 throw new IndexOutOfRangeException(
                     $"Component index ({index}) must be less than {Components.Count} and greater or equal to 0.");
             }
-        }
-        
-        public new float GetWeight()
-        {
-            float sum = 0.0f;
-            foreach (GiftItemComponent component in Components)
-            {
-                sum += component.GetWeight();
-            }
-
-            return sum;
         }
     }
 }

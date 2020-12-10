@@ -5,14 +5,45 @@ using T1.GiftComponents;
 
 namespace T1
 {
-    
-    
-    public abstract class GiftItem: GiftStuffBase
+    public abstract class GiftItem : GiftStuffBase
     {
-        
+        public GiftItem()
+        {
+            
+        }
+
+        public GiftItem(string name, string manufacturer, GiftItemComponent initComponent = null)
+        {
+            Name = name;
+            Manufacturer = manufacturer;
+            Components = new List<GiftItemComponent> {initComponent};
+        }
+
         public new List<GiftItemComponent> Components;
 
         public int ComponentsCount => Components.Count;
+
+        public new float GetWeight()
+        {
+            float sum = 0.0f;
+            foreach (GiftItemComponent component in Components)
+            {
+                sum += component.GetWeight();
+            }
+
+            return sum;
+        }
+
+        public new float GetPrice()
+        {
+            float sum = 0.0f;
+            foreach (GiftItemComponent component in Components)
+            {
+                sum += component.GetPrice();
+            }
+
+            return sum;
+        }
 
         public GiftItemComponent this[int index]
         {
@@ -36,18 +67,6 @@ namespace T1
                 throw new IndexOutOfRangeException(
                     $"Component index ({index}) must be less than {Components.Count} and greater or equal to 0.");
             }
-        }
-
-        public GiftItem()
-        {
-            
-        }
-        
-        public GiftItem(string name, string manufacturer, GiftItemComponent initComponent = null)
-        {
-            Name = name;
-            Manufacturer = manufacturer;
-            Components = new List<GiftItemComponent> {initComponent};
         }
 
 

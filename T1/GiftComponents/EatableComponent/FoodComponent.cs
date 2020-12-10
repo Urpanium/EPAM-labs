@@ -7,20 +7,14 @@ namespace T1.GiftComponents.EatableComponent
     {
         public FoodComponent() : base()
         {
-            
+            Taste = new Taste(0.0f, 0.0f, 0.0f, 0.0f);
         }
 
         public FoodComponent(string name, string manufacturer, float weight, Taste taste, PriceType priceType,
             PriceRoundingRule priceRoundingRule, float rawPrice) : base(name, manufacturer, weight, priceType,
-            priceRoundingRule)
+            priceRoundingRule, rawPrice)
         {
-            Name = name;
-            Manufacturer = manufacturer;
-            Weight = weight;
             Taste = taste;
-            this.priceType = priceType;
-            this.priceRoundingRule = priceRoundingRule;
-            RawPrice = rawPrice;
         }
 
         public Taste Taste { get; set; }
