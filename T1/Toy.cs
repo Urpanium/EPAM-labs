@@ -5,7 +5,7 @@ using T1.GiftComponents.ToyComponent;
 
 namespace T1
 {
-    public class Toy : GiftItem, IGiftable
+    public class Toy : GiftItem
     {
         public Toy() : base()
         {
@@ -30,22 +30,22 @@ namespace T1
             float sum = 0.0f;
             foreach (GiftItemComponent component in Components)
             {
-                sum += component.Weight;
+                sum += component.GetWeight();
             }
 
             return sum;
         }
 
-        public float GetPrice()
+        /*public float GetPrice()
         {
             float sum = 0.0f;
             foreach (GiftItemComponent component in Components)
             {
-                sum += component.CalculatedPrice;
+                sum += component.GetPrice();
             }
 
             return sum;
-        }
+        }*/
 
 
         public new ToyComponent this[int index]

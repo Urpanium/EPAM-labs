@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Serialization;
 
 namespace T1.GiftComponents.ToyComponent
 {

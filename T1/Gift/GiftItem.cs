@@ -7,15 +7,15 @@ namespace T1
 {
     
     
-    public abstract class GiftItem: IGiftable
+    public abstract class GiftItem: GiftStuffBase
     {
-        public string Name{ get; set; }
+        /*public string Name{ get; set; }
         public string Manufacturer{ get; set; }
-
+*/
         
-        public List<GiftItemComponent> Components;
+        public new List<GiftItemComponent> Components;
 
-        public float GetWeight()
+        /*public float GetWeight()
         {
                 float sum = 0.0f;
                 foreach (GiftItemComponent component in Components)
@@ -25,21 +25,21 @@ namespace T1
 
                 return sum;
             
-        }
+        }*/
 
-        public float GetPrice()
+        /*public float GetPrice()
         {
             
             
                 float sum = 0;
                 foreach (GiftItemComponent component in Components)
                 {
-                    sum += component.CalculatedPrice;
+                    sum += component.GetPrice();
                 }
 
                 return sum;
             
-        }
+        }*/
         public int ComponentsCount => Components.Count;
 
         public GiftItemComponent this[int index]
@@ -89,8 +89,8 @@ namespace T1
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("Gift Item\n");
-            stringBuilder.Append($"Name: {Name}, manufactured by {Manufacturer}, Weight: {GetWeight}\n");
-            stringBuilder.Append($"Price: {Price}\n");
+            stringBuilder.Append($"Name: {Name}, manufactured by {Manufacturer}, Weight: {GetWeight()}\n");
+            stringBuilder.Append($"Price: {GetPrice()}\n");
             stringBuilder.Append($"Components ({Components.Count}):\n");
             for (int i = 0; i < Components.Count; i++)
             {

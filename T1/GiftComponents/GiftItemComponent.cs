@@ -1,58 +1,44 @@
 ﻿using System;
 using System.Text;
-using System.Xml.Serialization;
 using T1.Enums;
 
 namespace T1.GiftComponents
 {
-    
-    //
-    
-    
-    
-    public abstract class GiftItemComponent: IGiftable
+    public abstract class GiftItemComponent : GiftStuffBase
     {
-        
-
-        
-
-        
-        /*public string Name { get; set; }
-        
-        public string Manufacturer { get; set; }
-
-        public float Weight { get; set; }*/
-
-        
         public PriceType priceType { get; set; }
-        
+
         public PriceRoundingRule priceRoundingRule { get; set; }
 
         public float RawPrice { get; set; }
 
-        public float CalculatedPrice
+        public float Weight { get; set; }
+
+        public new float GetPrice()
         {
-            get
+            switch (priceType)
             {
-                switch (priceType)
+                case PriceType.PerKilo:
                 {
-                    case PriceType.PerKilo:
-                    {
-                        return RoundPrice(Weight * RawPrice);
-                    }
-                    default:
-                    {
-                        return RoundPrice(RawPrice);
-                    }
+                    return RoundPrice(GetWeight() * RawPrice);
+                }
+                default:
+                {
+                    return RoundPrice(RawPrice);
                 }
             }
         }
+        /*public float CalculatedPrice
+        {
+            get
+            {
+                
+            }
+        }*/
 
 
-        
         public GiftItemComponent()
         {
-            
         }
 
         public GiftItemComponent(string name, string manufacturer, float weight, PriceType priceType,
@@ -84,7 +70,7 @@ namespace T1.GiftComponents
             stringBuilder.Append((priceType == PriceType.PerKilo
                 ? $"Price Per Kilo: {RawPrice}"
                 : ""));
-            stringBuilder.Append($"\nTotal Price: {CalculatedPrice}");
+            stringBuilder.Append($"\nTotal Price: {GetPrice()}");
             return stringBuilder.ToString();
         }
 

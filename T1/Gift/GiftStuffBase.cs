@@ -4,17 +4,20 @@ using T1.Enums;
 
 namespace T1
 {
-    public abstract class IGiftable
+    //это что бля?
+    public abstract class GiftStuffBase
     {
-        public IGiftable()
+        public GiftStuffBase()
         {
+            
         }
 
         public string Name { get; set; }
         public string Manufacturer { get; set; }
 
-        public List<IGiftable> Components;
-        public float Weight { get; set; }
+        public List<GiftStuffBase> Components;
+        
+        /*public float GetWeight { get; set; }*/
 
         /*public PriceType priceType { get; set; }
 
@@ -43,7 +46,7 @@ namespace T1
         public float GetWeight()
         {
             float sum = 0.0f;
-            foreach (IGiftable component in Components)
+            foreach (GiftStuffBase component in Components)
             {
                 sum += component.GetWeight();
             }
@@ -55,7 +58,7 @@ namespace T1
         public float GetPrice()
         {
             float sum = 0.0f;
-            foreach (IGiftable component in Components)
+            foreach (GiftStuffBase component in Components)
             {
                 sum += component.GetPrice();
             }

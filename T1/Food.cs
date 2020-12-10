@@ -17,7 +17,7 @@ namespace T1
                 float sum = 0.0f;
                 foreach (GiftItemComponent component in Components)
                 {
-                    sum += component.Weight;
+                    sum += component.GetWeight();
                 }
 
                 return sum;
@@ -32,7 +32,7 @@ namespace T1
                 float sum = 0.0f;
                 foreach (GiftItemComponent component in Components)
                 {
-                    sum += component.CalculatedPrice;
+                    sum += component.GetPrice();
                 }
 
                 return sum;
