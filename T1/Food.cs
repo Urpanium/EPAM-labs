@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
+
 using T1.GiftComponents;
-using T1.GiftComponents.EatableComponent;
 
 namespace T1
 {
-    public class Eatable : GiftItem
+    public class Food : GiftItem
     {
-        [XmlArray("Comps"), XmlArrayItem(typeof(EatableComponent), ElementName = "Component")]
-        public new List<EatableComponent> Comps;
+        
+        public new List<GiftItemComponent> Components;
 
         public new float Weight
         {
             get
             {
                 float sum = 0.0f;
-                foreach (EatableComponent component in Comps)
+                foreach (GiftItemComponent component in Components)
                 {
                     sum += component.Weight;
                 }
@@ -31,7 +30,7 @@ namespace T1
             {
                 
                 float sum = 0.0f;
-                foreach (EatableComponent component in Comps)
+                foreach (GiftItemComponent component in Components)
                 {
                     sum += component.CalculatedPrice;
                 }
@@ -45,7 +44,7 @@ namespace T1
             get
             {
                 float sum = 0.0f;
-                foreach (EatableComponent component in Comps)
+                foreach (GiftItemComponent component in Components)
                 {
                     sum += Sweetness;
                 }
@@ -59,7 +58,7 @@ namespace T1
             get
             {
                 float sum = 0.0f;
-                foreach (EatableComponent component in Comps)
+                foreach (GiftItemComponent component in Components)
                 {
                     sum += Sourness;
                 }
@@ -73,7 +72,7 @@ namespace T1
             get
             {
                 float sum = 0.0f;
-                foreach (EatableComponent component in Comps)
+                foreach (GiftItemComponent component in Components)
                 {
                     sum += Bitterness;
                 }
@@ -87,7 +86,7 @@ namespace T1
             get
             {
                 float sum = 0.0f;
-                foreach (EatableComponent component in Comps)
+                foreach (GiftItemComponent component in Components)
                 {
                     sum += Salinity;
                 }
@@ -96,44 +95,44 @@ namespace T1
             }
         }
 
-        public new EatableComponent this[int index]
+        public new GiftItemComponent this[int index]
         {
             get
             {
-                if (index < Comps.Count && index >= 0)
+                if (index < Components.Count && index >= 0)
                 {
-                    return (EatableComponent) Comps[index];
+                    return Components[index];
                 }
 
                 throw new IndexOutOfRangeException(
-                    $"Component index ({index}) must be less than {Comps.Count} and greater or equal to 0.");
+                    $"Component index ({index}) must be less than {Components.Count} and greater or equal to 0.");
             }
             set
             {
-                if (index < Comps.Count && index >= 0)
+                if (index < Components.Count && index >= 0)
                 {
-                    Comps[index] = value;
+                    Components[index] = value;
                 }
 
                 throw new IndexOutOfRangeException(
-                    $"Component index ({index}) must be less than {Comps.Count} and greater or equal to 0.");
+                    $"Component index ({index}) must be less than {Components.Count} and greater or equal to 0.");
             }
         }
 
-        public Eatable() : base()
+        public Food() : base()
         {
-            Comps = new List<EatableComponent>();
+            Components = new List<GiftItemComponent>();
         }
 
-        public Eatable(string name, string manufacturer, GiftItemComponent initComponent) : base(name, manufacturer,
+        public Food(string name, string manufacturer, GiftItemComponent initComponent) : base(name, manufacturer,
             initComponent)
         {
-            Comps = new List<EatableComponent>();
+            Components = new List<GiftItemComponent>();
         }
 
-        protected Eatable(string name, string manufacturer) : base(name, manufacturer)
+        protected Food(string name, string manufacturer) : base(name, manufacturer)
         {
-            Comps = new List<EatableComponent>();
+            Components = new List<GiftItemComponent>();
         }
     }
 }

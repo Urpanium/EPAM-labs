@@ -5,10 +5,10 @@ namespace T1.GiftComponents.ToyComponent
 {
     public class Composition
     {
-        [XmlElement(ElementName = "Plastic")] public float Plastic { get; set; }
-        [XmlElement(ElementName = "Paper")] public float Paper { get; set; }
-        [XmlElement(ElementName = "Glass")] public float Glass { get; set; }
-        [XmlElement(ElementName = "Wood")] public float Wood { get; set; }
+        public float Plastic { get; set; }
+        public float Paper { get; set; }
+        public float Glass { get; set; }
+        public float Wood { get; set; }
 
         public Composition normalized
         {

@@ -1,10 +1,12 @@
-﻿using System.Xml.Serialization;
+﻿
+
+using T1.Enums;
 
 namespace T1.GiftComponents.ToyComponent
 {
     public class ToyComponent : GiftItemComponent
     {
-        [XmlElement(ElementName = "Composition")]
+        
         public Composition Composition{ get; set; }
 
         public ToyComponent() : base()

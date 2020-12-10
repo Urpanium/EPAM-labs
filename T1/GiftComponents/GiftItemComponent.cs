@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Xml.Serialization;
+using T1.Enums;
 
 namespace T1.GiftComponents
 {
@@ -9,35 +10,25 @@ namespace T1.GiftComponents
     
     
     
-    public abstract class GiftItemComponent
+    public abstract class GiftItemComponent: IGiftable
     {
-        public enum PriceType
-        {
-            PerOne = 0,
-            PerKilo = 1
-        }
-
-        public enum PriceRoundingRule
-        {
-            Mathematical = 0,
-            Floor = 1
-        }
+        
 
         
-        [XmlElement(ElementName = "Name")] public string Name { get; set; }
 
-        [XmlElement(ElementName = "Manufacturer")]
+        
+        /*public string Name { get; set; }
+        
         public string Manufacturer { get; set; }
 
-        [XmlElement(ElementName = "Weight")] public float Weight { get; set; }
+        public float Weight { get; set; }*/
 
-        [XmlElement(ElementName = "PriceType")]
+        
         public PriceType priceType { get; set; }
-
-        [XmlElement(ElementName = "PriceRoundingRule")]
+        
         public PriceRoundingRule priceRoundingRule { get; set; }
 
-        [XmlElement(ElementName = "RawPrice")] public float RawPrice { get; set; }
+        public float RawPrice { get; set; }
 
         public float CalculatedPrice
         {
@@ -61,6 +52,7 @@ namespace T1.GiftComponents
         
         public GiftItemComponent()
         {
+            
         }
 
         public GiftItemComponent(string name, string manufacturer, float weight, PriceType priceType,

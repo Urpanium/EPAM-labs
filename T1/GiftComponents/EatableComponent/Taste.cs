@@ -1,20 +1,52 @@
 ﻿using System;
 using System.Text;
-using System.Xml.Serialization;
+
 
 namespace T1.GiftComponents.EatableComponent
 {
     public class Taste
     {
-        [XmlElement(ElementName = "Sweetness")]
+        private Taste()
+        {
+            
+        }
+
+        public Taste(float sweetness, float sourness, float bitterness, float salinity)
+        {
+            Sweetness = sweetness;
+            Sourness = sourness;
+            Bitterness = bitterness;
+            Salinity = salinity;
+            if (!Check())
+                Normalize();
+        }
+
+        public void Normalize()
+        {
+            
+            float sum = GetSum();
+            if (sum > 0)
+            {
+                Sweetness /= sum;
+                Sourness /= sum;
+                Bitterness /= sum;
+                Salinity /= sum;
+            }
+            else
+            {
+                //TODO: throw custom exception
+                //ah fuck this
+            }
+        }
+
         public float Sweetness { get; set; }
 
-        [XmlElement(ElementName = "Sourness")] public float Sourness { get; set; }
+        public float Sourness { get; set; }
 
-        [XmlElement(ElementName = "Bitterness")]
+
         public float Bitterness { get; set; }
 
-        [XmlElement(ElementName = "Salinity")] public float Salinity { get; set; }
+        public float Salinity { get; set; }
 
         public Taste normalized
         {
@@ -38,39 +70,6 @@ namespace T1.GiftComponents.EatableComponent
             return taste;
         }
 
-        private Taste()
-        {
-        }
-
-        public Taste(float sweetness, float sourness, float bitterness, float salinity)
-        {
-            Sweetness = sweetness;
-            Sourness = sourness;
-            Bitterness = bitterness;
-            Salinity = salinity;
-            if (!Check())
-                Normalize();
-        }
-
-        public void Normalize()
-        {
-            /*float sum = (float)(Math.Pow(Sweetness, 2) +
-                        Math.Pow(Sourness, 2) +
-                        Math.Pow(Bitterness, 2) +
-                        Math.Pow(Salinity, 2));*/
-            float sum = GetSum();
-            if (sum > 0)
-            {
-                Sweetness /= sum;
-                Sourness /= sum;
-                Bitterness /= sum;
-                Salinity /= sum;
-            }
-            else
-            {
-                //TODO: throw custom exception
-            }
-        }
 
         private bool Check()
         {

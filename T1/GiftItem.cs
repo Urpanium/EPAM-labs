@@ -1,32 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
-using System.Xml.Serialization;
-using T1.Groups;
 using T1.GiftComponents;
 
 namespace T1
 {
     
     
-    public abstract class GiftItem
+    public abstract class GiftItem: IGiftable
     {
-        [XmlElement(ElementName = "Name")]
         public string Name{ get; set; }
-        [XmlElement(ElementName = "Manufacturer")]
         public string Manufacturer{ get; set; }
 
         
-
-        //[XmlIgnore]
-        //[XmlArray("Components"), XmlArrayItem(typeof(GiftItemComponent), ElementName = "Component")]
         public List<GiftItemComponent> Components;
 
-        public float Weight
+        public float GetWeight()
         {
-            get
-            {
                 float sum = 0.0f;
                 foreach (GiftItemComponent component in Components)
                 {
@@ -34,13 +24,13 @@ namespace T1
                 }
 
                 return sum;
-            }
+            
         }
 
-        public float Price
+        public float GetPrice()
         {
-            get
-            {
+            
+            
                 float sum = 0;
                 foreach (GiftItemComponent component in Components)
                 {
@@ -48,7 +38,7 @@ namespace T1
                 }
 
                 return sum;
-            }
+            
         }
         public int ComponentsCount => Components.Count;
 
@@ -99,7 +89,7 @@ namespace T1
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("Gift Item\n");
-            stringBuilder.Append($"Name: {Name}, manufactured by {Manufacturer}, Weight: {Weight}\n");
+            stringBuilder.Append($"Name: {Name}, manufactured by {Manufacturer}, Weight: {GetWeight}\n");
             stringBuilder.Append($"Price: {Price}\n");
             stringBuilder.Append($"Components ({Components.Count}):\n");
             for (int i = 0; i < Components.Count; i++)

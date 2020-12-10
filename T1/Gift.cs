@@ -1,32 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Xml.Serialization;
-using T1.GiftComponents;
-using T1.GiftComponents.EatableComponent;
-using T1.GiftComponents.ToyComponent;
-using T1.Groups;
 
 namespace T1
 {
-
-    [XmlInclude(typeof(ToyComponent))]
-    [XmlInclude(typeof(Composition))]
-    
-    [XmlInclude(typeof(EatableComponent))]
-    [XmlInclude(typeof(Taste))]
-    
-    [XmlInclude(typeof(EatableGroup))]
-    
-    [XmlInclude(typeof(Eatable))]
-    
-    [XmlInclude(typeof(GiftItem))]
-    [XmlInclude(typeof(GiftItemComponent))]
-    
     public class Gift
     {
-        [XmlArray("Components"), XmlArrayItem(typeof(GiftItem), ElementName = "Item")]
+        
         public List<GiftItem> Components { get; set; }
 
         public Gift()

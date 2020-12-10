@@ -1,22 +1,16 @@
 ﻿using System.Text;
-using System.Xml.Serialization;
+using T1.Enums;
 
 namespace T1.GiftComponents.EatableComponent
 {
-    public class EatableComponent : GiftItemComponent
+    public class FoodComponent : GiftItemComponent
     {
-        
-        
-        
-        
-        // Additional parameters
-        [XmlElement(ElementName = "Taste")] public Taste Taste { get; set; }
-
-        public EatableComponent() : base()
+        public FoodComponent() : base()
         {
+            
         }
 
-        public EatableComponent(string name, string manufacturer, float weight, Taste taste, PriceType priceType,
+        public FoodComponent(string name, string manufacturer, float weight, Taste taste, PriceType priceType,
             PriceRoundingRule priceRoundingRule, float rawPrice) : base(name, manufacturer, weight, priceType,
             priceRoundingRule)
         {
@@ -28,6 +22,9 @@ namespace T1.GiftComponents.EatableComponent
             this.priceRoundingRule = priceRoundingRule;
             RawPrice = rawPrice;
         }
+
+        public Taste Taste { get; set; }
+
 
         public override string ToString()
         {
