@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using T1.GiftComponents;
 
-namespace T1
+namespace T1.Gift
 {
     public abstract class GiftItem : GiftStuffBase
     {

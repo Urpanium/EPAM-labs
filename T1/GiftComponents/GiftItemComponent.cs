@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using T1.Enums;
+using T1.Gift;
 
 namespace T1.GiftComponents
 {
@@ -17,13 +18,13 @@ namespace T1.GiftComponents
             Manufacturer = manufacturer;
             Weight = weight;
             RawPrice = rawPrice;
-            this.priceType = priceType;
-            this.priceRoundingRule = priceRoundingRule;
+            this.PriceType = priceType;
+            this.PriceRoundingRule = priceRoundingRule;
         }
 
-        public PriceType priceType { get; set; }
+        public PriceType PriceType { get; set; }
 
-        public PriceRoundingRule priceRoundingRule { get; set; }
+        public PriceRoundingRule PriceRoundingRule { get; set; }
 
         public float RawPrice { get; set; }
 
@@ -31,7 +32,7 @@ namespace T1.GiftComponents
 
         public new float GetPrice()
         {
-            switch (priceType)
+            switch (PriceType)
             {
                 case PriceType.PerKilo:
                 {
@@ -55,13 +56,13 @@ namespace T1.GiftComponents
 
         public string GetInfoString()
         {
-            return $"{Name}, manufactured by {Manufacturer} \nWeight: {Weight} \nPrice Type: {priceType} \n";
+            return $"{Name}, manufactured by {Manufacturer} \nWeight: {Weight} \nPrice Type: {PriceType} \n";
         }
 
         protected string GetPriceString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append((priceType == PriceType.PerKilo
+            stringBuilder.Append((PriceType == PriceType.PerKilo
                 ? $"Price Per Kilo: {RawPrice}"
                 : ""));
             stringBuilder.Append($"\nTotal Price: {GetPrice()}");
@@ -71,7 +72,7 @@ namespace T1.GiftComponents
 
         private float RoundPrice(float floatPrice)
         {
-            switch (priceRoundingRule)
+            switch (PriceRoundingRule)
             {
                 case PriceRoundingRule.Floor:
                 {

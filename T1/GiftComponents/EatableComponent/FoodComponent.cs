@@ -5,7 +5,7 @@ namespace T1.GiftComponents.EatableComponent
 {
     public class FoodComponent : GiftItemComponent
     {
-        public FoodComponent() : base()
+        public FoodComponent()
         {
             Taste = new Taste(0.0f, 0.0f, 0.0f, 0.0f);
         }

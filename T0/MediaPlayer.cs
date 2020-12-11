@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using T0.Medias;
 
-namespace T0.Medias
+namespace T0
 {
     public class MediaPlayer
     {
         //public float PlayDelay { get; set; }
 
-        private readonly Queue<Media> Queue;
+        private readonly Queue<Media> _queue;
 
         public MediaPlayer()
         {
-            Queue = new Queue<Media>();
+            _queue = new Queue<Media>();
         }
 
         public void PlayList(List<Media> medias)
@@ -18,13 +19,13 @@ namespace T0.Medias
             //LINQ?????
             foreach (Media media in medias)
             {
-                Queue.Enqueue(media);
+                _queue.Enqueue(media);
             }
         }
 
         public void PlayAll()
         {
-            foreach (Media media in Queue)
+            foreach (Media media in _queue)
             {
                 media.Play();
             }
@@ -33,17 +34,17 @@ namespace T0.Medias
         public void Play(Media media)
         {
             Clear();
-            Queue.Enqueue(media);
+            _queue.Enqueue(media);
         }
 
         public void AddToQueue(Media media)
         {
-            Queue.Enqueue(media);
+            _queue.Enqueue(media);
         }
 
         public void Clear()
         {
-            Queue.Clear();
+            _queue.Clear();
         }
     }
 }

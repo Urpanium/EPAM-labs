@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using T1.Gift;
 using T1.GiftComponents;
 using T1.GiftComponents.EatableComponent;
 
@@ -10,7 +11,7 @@ namespace T1
     {
         public new List<GiftItemComponent> Components;
 
-        public Food() : base()
+        public Food()
         {
             Components = new List<GiftItemComponent>();
         }

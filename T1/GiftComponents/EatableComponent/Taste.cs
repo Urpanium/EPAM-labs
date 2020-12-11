@@ -5,11 +5,6 @@ namespace T1.GiftComponents.EatableComponent
 {
     public class Taste
     {
-        private Taste()
-        {
-            
-        }
-
         public Taste(float sweetness, float sourness, float bitterness, float salinity)
         {
             Sweetness = sweetness;

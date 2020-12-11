@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using T1.Enums;
 using T1.GiftComponents.EatableComponent;
 using T1.GiftComponents.ToyComponent;
@@ -9,9 +7,9 @@ namespace T1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Gift gift = MakeGift();
+            Gift.Gift gift = MakeGift();
 
             //Hans, bring sortierung
             var sortedFood =
@@ -32,9 +30,9 @@ namespace T1
             
         }
 
-        static Gift MakeGift()
+        static Gift.Gift MakeGift()
         {
-            Gift gift = new Gift();
+            Gift.Gift gift = new Gift.Gift();
             FoodComponent sourCandy =
                 new FoodComponent("Sour Candy XXL", "Candy Unicorn Company", 0.012f,
                     new Taste(0.25f, 0.75f, 0.00f, 0.00f),

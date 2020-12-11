@@ -4,7 +4,7 @@ namespace T1.GiftComponents.ToyComponent
 {
     public class ToyComponent : GiftItemComponent
     {
-        public ToyComponent() : base()
+        public ToyComponent()
         {
             Composition = new Composition(0.0f, 0.0f, 0.0f, 0.0f);
         }

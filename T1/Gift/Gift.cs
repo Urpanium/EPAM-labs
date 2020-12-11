@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace T1
+namespace T1.Gift
 {
     public class Gift
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using T1.Gift;
 using T1.GiftComponents;
-using T1.GiftComponents.ToyComponent;
 
 namespace T1
 {
     public class Toy : GiftItem
     {
-        public Toy() : base()
+        public Toy()
         {
             Components = new List<GiftItemComponent>();
         }

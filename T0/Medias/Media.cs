@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace T0
+﻿namespace T0.Medias
 {
     public abstract class Media
     {
