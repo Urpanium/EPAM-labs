@@ -1,5 +1,8 @@
 ﻿using System.Linq;
+//using
 using T1.Enums;
+
+using T1.Gift.GIftItems;
 using T1.GiftComponents.EatableComponent;
 using T1.GiftComponents.ToyComponent;
 
@@ -11,6 +14,8 @@ namespace T1
         {
             Gift.Gift gift = MakeGift();
 
+            //gift.Weight;
+            
             //Hans, bring sortierung
             var sortedFood =
                 from i in gift.Components
@@ -37,7 +42,7 @@ namespace T1
                 new FoodComponent("Sour Candy XXL", "Candy Unicorn Company", 0.012f,
                     new Taste(0.25f, 0.75f, 0.00f, 0.00f),
                     PriceType.PerKilo, PriceRoundingRule.Mathematical, 25);
-            FoodComponent sweetCandy =
+            FoodComponent sweetCandyComponent =
                 new FoodComponent("Super Sweet Shi(r)t", "Default Sweets Company", 0.012f,
                     new Taste(0.90f, 0.10f, 0.00f, 0.00f),
                     PriceType.PerKilo, PriceRoundingRule.Mathematical, 20);
@@ -54,6 +59,7 @@ namespace T1
                 new Composition(0.0f, 0.0f, 1.0f, 0.0f), PriceType.PerKilo, PriceRoundingRule.Mathematical, 9999.99f);
 
             Food sourSweet = new Food("Sour Sweet", "SOUR MAN INC.", sourCandy);
+            sourSweet.Components.Add(sweetCandyComponent);
             Food chocolateBar = new Food("Chocolate Bar", "Maestro Pereigral & Unichtozhil INC.", chocolate);
 
             Toy toyeca = new Toy("Toyeca", "Toy-Volt", plastic);

@@ -19,7 +19,7 @@ namespace T1.Gift
             Components = new List<GiftItemComponent> {initComponent};
         }
 
-        public new List<GiftItemComponent> Components;
+        public new readonly List<GiftItemComponent> Components = new List<GiftItemComponent>();
 
         public int ComponentsCount => Components.Count;
 

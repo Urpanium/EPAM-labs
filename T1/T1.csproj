@@ -47,11 +47,11 @@
       <Compile Include="GiftComponents\ToyComponent\ToyComponent.cs" />
       <Compile Include="Gift\Gift.cs" />
       <Compile Include="Gift\GiftItem.cs" />
+      <Compile Include="Gift\GIftItems\Food.cs" />
+      <Compile Include="Gift\GIftItems\Toy.cs" />
       <Compile Include="Gift\GiftStuffBase.cs" />
       <Compile Include="Program.cs" />
       <Compile Include="Properties\AssemblyInfo.cs" />
-      <Compile Include="Food.cs" />
-      <Compile Include="Toy.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

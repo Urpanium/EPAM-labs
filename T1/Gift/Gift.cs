@@ -5,13 +5,26 @@ namespace T1.Gift
 {
     public class Gift
     {
-        
         public List<GiftItem> Components { get; set; }
+
+        public float Weight
+        {
+            get
+            {
+                float sum = 0.0f;
+                foreach (var item in Components)
+                {
+                    sum += item.GetWeight();
+                }
+                return sum;
+            }
+        }
 
         public Gift()
         {
             Components = new List<GiftItem>();
         }
+
 
         public bool IsEmpty()
         {

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using T1.Gift;
 using T1.GiftComponents;
 using T1.GiftComponents.EatableComponent;
 
-namespace T1
+namespace T1.Gift.GIftItems
 {
     public class Food : GiftItem
     {
@@ -20,6 +19,18 @@ namespace T1
             initComponent)
         {
             Components = new List<GiftItemComponent>() {initComponent};
+        }
+
+        public Food(string name, string manufacturer, IEnumerable<GiftItemComponent> initComponentList) : base(name,
+            manufacturer)
+        {
+            if (initComponentList != null)
+            {
+                Components = initComponentList.ToList();
+            }
+
+            /*else
+                Components = new List<GiftItemComponent>();*/
         }
 
         public new GiftItemComponent this[int index]
@@ -48,7 +59,7 @@ namespace T1
 
         public float GetSweetnessSum()
         {
-            var sortedFoodComponents = 
+            var sortedFoodComponents =
                 from i in Components
                 where i is FoodComponent
                 select i;
@@ -61,10 +72,10 @@ namespace T1
 
             return sum;
         }
-        
+
         public float GetSalinitySum()
         {
-            var sortedFoodComponents = 
+            var sortedFoodComponents =
                 from i in Components
                 where i is FoodComponent
                 select i;
@@ -77,9 +88,10 @@ namespace T1
 
             return sum;
         }
+
         public float GetBitternessSum()
         {
-            var sortedFoodComponents = 
+            var sortedFoodComponents =
                 from i in Components
                 where i is FoodComponent
                 select i;
@@ -92,10 +104,10 @@ namespace T1
 
             return sum;
         }
-        
+
         public float GetSournessSum()
         {
-            var sortedFoodComponents = 
+            var sortedFoodComponents =
                 from i in Components
                 where i is FoodComponent
                 select i;

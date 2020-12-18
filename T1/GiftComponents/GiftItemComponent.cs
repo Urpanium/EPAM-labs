@@ -18,8 +18,8 @@ namespace T1.GiftComponents
             Manufacturer = manufacturer;
             Weight = weight;
             RawPrice = rawPrice;
-            this.PriceType = priceType;
-            this.PriceRoundingRule = priceRoundingRule;
+            PriceType = priceType;
+            PriceRoundingRule = priceRoundingRule;
         }
 
         public PriceType PriceType { get; set; }
