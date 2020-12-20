@@ -2,25 +2,23 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace T2.Text
+namespace T2
 {
     public class TextParser
     {
         private static readonly string[] PunctuationMarks = {",", ";", "\"","'", "\n", " ", "—", "-"};
         
         private static readonly string[] SentenceDividers = {".", "!", "?", "?!", "!?", "..."};
-
-        public static T2.Text.Text Parse(string text)
+        
+        public static Text Parse(string text)
         {
-            //TODO: stop eating newlines
-            text = Regex.Replace(text, @"(\s+)|(\t+)", " ");
+            text = Regex.Replace(text, @"( +)|(\t+)", " ");
 
             List<Sentence> sentences = new List<Sentence>();
             List<SentenceItem> currentItems = new List<SentenceItem>();
             
             
-            MatchCollection matchCollection = Regex.Matches(text, @"(\w+)|([\W_-[\s]]+)|(\s)");
-            
+            MatchCollection matchCollection = Regex.Matches(text, @"(\w+\-\w+)|(\w+)|([\W_-[\s]]+)|(\s)");
             foreach (Match match in matchCollection)
             {
                 string s = match.Value;
@@ -47,9 +45,11 @@ namespace T2.Text
                 }
             }
 
-            T2.Text.Text result = new T2.Text.Text(sentences);
+            Text result = new Text(sentences);
             return result;
         }
+        
+        
 
         private static bool IsWord(string s)
         {
