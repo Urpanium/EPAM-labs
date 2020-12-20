@@ -21,7 +21,11 @@ namespace T2
         {
             string input = ReadFile("input.txt");
             Text text = TextParser.Parse(input);
-            Console.WriteLine(text);
+            foreach (var word in text.Words)
+            {
+                Console.WriteLine(word);
+            }
+            //Console.WriteLine(text);
         }
 
         static string ReadFile(string name)

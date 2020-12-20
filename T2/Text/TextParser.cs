@@ -18,7 +18,7 @@ namespace T2
             List<SentenceItem> currentItems = new List<SentenceItem>();
             
             
-            MatchCollection matchCollection = Regex.Matches(text, @"(\w+\-\w+)|(\w+)|([\W_-[\s]]+)|(\s)");
+            MatchCollection matchCollection = Regex.Matches(text, @"((\w+\-)+(\w+))|(\w+)|([\W_-[\s]]+)|(\s)");
             foreach (Match match in matchCollection)
             {
                 string s = match.Value;
