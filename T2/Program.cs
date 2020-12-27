@@ -1,51 +1,54 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
+using System.Text;
 
 namespace T2
 {
-    /*
-     
-    Задача 1. Создать программу обработки текста учебника по программированию с использованием классов: Символ, Слово, Предложение, Знак препинания и др. (состав и иерархию классов продумать самостоятельно).
-    Во всех задачах с формированием текста заменять табуляции и последовательности пробелов одним пробелом.
-
-    1. Вывести все предложения заданного текста в порядке возрастания количества слов в каждом из них.
-    2. Во всех вопросительных предложениях текста найти и напечатать без повторений слова заданной длины.
-    3. Из текста удалить все слова заданной длины, начинающиеся на согласную букву.
-    4. В некотором предложении текста слова заданной длины заменить указанной подстрокой, длина которой может не совпадать с длиной слова.
-    
-    */
     internal class Program
     {
         public static void Main(string[] args)
         {
-            string input = ReadFile("input.txt");
-            Console.WriteLine("INPUT: " + input);
-            Text text = TextParser.Parse(input);
-            //1
-            var sortedSentences = GetSortedByWordsCountSentences(text);
+            string inputPath = ConfigurationSettings.AppSettings["FileInputPath"];
+            string outputPath = ConfigurationSettings.AppSettings["FileOutputPath"];
             
-            //2
-            var questionSentences = GetQuestionSentences(text);
-
-            foreach (var sentence in questionSentences)
+            try
             {
-                var words = GetUniqueWordsOfLength(sentence, 6);
+                string input = ReadFileWithStream(inputPath);
+                Text text = TextParser.Parse(input);
+                //1
+                var sortedSentences = GetSortedByWordsCountSentences(text);
+
+                //2
+                var questionSentences = GetQuestionSentences(text);
+
+                foreach (var sentence in questionSentences)
+                {
+                    var words = GetUniqueWordsOfLength(sentence, 6);
+                    foreach (var word in words)
+                    {
+                        Console.WriteLine(word);
+                    }
+                }
+
+                //3
+                RemoveWordsThatStartWithConsonant(text, 3);
+
+                //4
+                ReplaceWordsOfLength(text.Sentences[0], 6, "ururuururu");
+
+                //Console.WriteLine(text);
             }
-            //3
-            RemoveWordsThatStartWithConsonant(text, 3);
-            
-            //4
-            ReplaceWordsOfLength(text.Sentences[0], 6, "ururuururu");
-            
-            Console.WriteLine(text);
+            catch (Exception e)
+            {
+                Console.WriteLine("Oh, something went wrong... Source code here: https://github.com/Urpanium/EPAM-labs, go fix it by yourself. " + e);
+            }
             
         }
 
-        static void ReplaceWordsOfLength(Sentence sentence, int wordLengthForReplacement, string replacement)
+        static void ReplaceWordsOfLength(Sentence.Sentence sentence, int wordLengthForReplacement, string replacement)
         {
             for (int i = 0; i < sentence.Items.Count; i++)
             {
@@ -65,32 +68,29 @@ namespace T2
                 for (int i = 0; i < sentence.Items.Count; i++)
                 {
                     SentenceItem item = sentence.Items[i];
-                    if (item is Word && item.Length == desiredLength)
+                    if (item is Word && item.Length == desiredLength && (item as Word).IsStartingWithConsonant())
                     {
-                        //SentenceItem neighbour;
                         //check neighbours for spaces
-
                         if (i > 0)
                         {
                             SentenceItem left = sentence.Items[i - 1];
                             if (left.Value.Equals(" "))
                                 sentence.Items.RemoveAt(--i);
-
-                            else if (i < sentence.Items.Count)
-                            {
-                                SentenceItem right = sentence.Items[i + 1];
-                                if (right.Value.Equals(" "))
-                                    sentence.Items.RemoveAt(i + 1);
-                            }
-
-                            sentence.Items.RemoveAt(i);
                         }
+                        else if (i < sentence.Items.Count)
+                        {
+                            SentenceItem right = sentence.Items[i + 1];
+                            if (right.Value.Equals(" "))
+                                sentence.Items.RemoveAt(i + 1);
+                        }
+                        
+                        sentence.Items.RemoveAt(i);
                     }
                 }
             }
         }
 
-        static IEnumerable<SentenceItem> GetUniqueWordsOfLength(Sentence sentence, int desiredLength)
+        static IEnumerable<SentenceItem> GetUniqueWordsOfLength(Sentence.Sentence sentence, int desiredLength)
         {
             //var uniqueWords = sentence.GetUniqueWords();
             var uniqueWords = from w in sentence.GetUniqueWords()
@@ -99,7 +99,7 @@ namespace T2
             return uniqueWords;
         }
 
-        static IEnumerable<Sentence> GetQuestionSentences(Text text)
+        static IEnumerable<Sentence.Sentence> GetQuestionSentences(Text text)
         {
             var questionSentences = from s in text.Sentences
                 where (s.Items[s.Items.Count - 1]).Value.Equals("?")
@@ -107,13 +107,31 @@ namespace T2
             return questionSentences;
         }
 
-        static IEnumerable<Sentence> GetSortedByWordsCountSentences(Text text)
+        static IEnumerable<Sentence.Sentence> GetSortedByWordsCountSentences(Text text)
         {
             var sortedSentences = from s in text.Sentences
                 orderby s.WordsCount
                 select s;
             return sortedSentences;
         }
+
+
+        static string ReadFileWithStream(string path)
+        {
+            StringBuilder builder = new StringBuilder();
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    builder.Append(line);
+                }
+                sr.Close();
+            }
+
+            return builder.ToString();
+        }
+        
 
         static string ReadFile(string name)
         {

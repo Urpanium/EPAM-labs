@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace T2
+namespace T2.Sentence
 {
     public class Sentence
     {
@@ -39,11 +38,6 @@ namespace T2
         //TODO: make it return <Word>
         public HashSet<SentenceItem> GetUniqueWords()
         {
-            /*var words = from w in Items
-                where w is Word
-                select w;
-
-            return new HashSet<SentenceItem>(words.ToList());*/
             HashSet<SentenceItem> result = new HashSet<SentenceItem>();
             foreach (var item in Items)
             {

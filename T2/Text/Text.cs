@@ -6,7 +6,7 @@ namespace T2
 {
     public class Text
     {
-        public List<Sentence> Sentences { get; }
+        public List<Sentence.Sentence> Sentences { get; }
 
         //TODO: make using LINQ
         public List<Word> Words
@@ -27,7 +27,7 @@ namespace T2
             }
         }
 
-        public Text(IEnumerable<Sentence> sentences)
+        public Text(IEnumerable<Sentence.Sentence> sentences)
         {
             Sentences = sentences.ToList();
         }

@@ -3,7 +3,7 @@ namespace T2
 {
     public class PunctuationMark : SentenceItem
     {
-        public override string Value { get; set; }
+        public sealed override string Value { get; set; }
 
         public override int Length => Value.Length;
 

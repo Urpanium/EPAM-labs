@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace T2
 {
-    public class TextParser
+    public static class TextParser
     {
         private static readonly string[] PunctuationMarks = {",", ":", ";", "'", "\"", "\n", " ", "—", "-"};
 
@@ -17,7 +16,7 @@ namespace T2
         {
             text = Regex.Replace(text, @"( +\t*)|(\t* +)|( +)|(\t+)|(\r+)", " ");
 
-            List<Sentence> sentences = new List<Sentence>();
+            List<Sentence.Sentence> sentences = new List<Sentence.Sentence>();
             List<SentenceItem> currentItems = new List<SentenceItem>();
 
 
@@ -52,13 +51,13 @@ namespace T2
                     PunctuationMark divider = new PunctuationMark(s);
                     currentItems.Add(divider);
 
-                    Sentence sentence = new Sentence(currentItems);
+                    Sentence.Sentence sentence = new Sentence.Sentence(currentItems);
                     currentItems.Clear();
                     sentences.Add(sentence);
                 }
             }
 
-            Text result = new Text(sentences);
+            var result = new Text(sentences);
             return result;
         }
 
