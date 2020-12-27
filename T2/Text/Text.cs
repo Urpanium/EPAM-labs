@@ -18,18 +18,18 @@ namespace T2
                 {
                     foreach (SentenceItem item in sentence.Items)
                     {
-                        if(item is Word)
-                            result.Add((Word)item);
+                        if (item is Word)
+                            result.Add((Word) item);
                     }
                 }
 
                 return result;
             }
         }
+
         public Text(IEnumerable<Sentence> sentences)
         {
             Sentences = sentences.ToList();
-            
         }
 
         public override string ToString()

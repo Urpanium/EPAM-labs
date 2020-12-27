@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace T2
     {
         public List<SentenceItem> Items { get; }
 
-        public int Length
+        public int SumLength
         {
             get
             {
@@ -34,7 +35,27 @@ namespace T2
         {
             Items = items.ToList();
         }
-        
+
+        //TODO: make it return <Word>
+        public HashSet<SentenceItem> GetUniqueWords()
+        {
+            /*var words = from w in Items
+                where w is Word
+                select w;
+
+            return new HashSet<SentenceItem>(words.ToList());*/
+            HashSet<SentenceItem> result = new HashSet<SentenceItem>();
+            foreach (var item in Items)
+            {
+                if (item is Word )
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();

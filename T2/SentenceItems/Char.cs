@@ -7,6 +7,7 @@
         
         public Char()
         {
+            
         }
 
         public Char(char value)
