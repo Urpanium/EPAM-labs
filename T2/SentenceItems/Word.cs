@@ -57,7 +57,7 @@ namespace T2
 
         public bool IsStartingWithConsonant()
         {
-            return Length != 0 && Consonants.Contains(Chars[0].Value + "");
+            return Length != 0 && Consonants.Contains(Chars[0].Value.ToString().ToLower());
         }
 
         public override bool Equals(object obj)

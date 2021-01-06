@@ -35,7 +35,6 @@ namespace T2.Sentence
             Items = items.ToList();
         }
 
-        //TODO: make it return <Word>
         public HashSet<SentenceItem> GetUniqueWords()
         {
             HashSet<SentenceItem> result = new HashSet<SentenceItem>();

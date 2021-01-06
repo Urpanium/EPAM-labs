@@ -7,8 +7,6 @@ namespace T2
     public class Text
     {
         public List<Sentence.Sentence> Sentences { get; }
-
-        //TODO: make using LINQ
         public List<Word> Words
         {
             get

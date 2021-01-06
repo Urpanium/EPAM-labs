@@ -19,27 +19,32 @@ namespace T2
                 string input = ReadFileWithStream(inputPath);
                 Text text = TextParser.Parse(input);
                 //1
-                var sortedSentences = GetSortedByWordsCountSentences(text);
+                /*var sortedSentences = GetSortedByWordsCountSentences(text);
+                foreach (var sentence in sortedSentences)
+                {
+                    Console.WriteLine(sentence);
+                }*/
 
                 //2
-                var questionSentences = GetQuestionSentences(text);
+                /*var questionSentences = GetQuestionSentences(text);
 
                 foreach (var sentence in questionSentences)
                 {
-                    var words = GetUniqueWordsOfLength(sentence, 6);
+                    var words = GetUniqueWordsOfLength(sentence, 15);
                     foreach (var word in words)
                     {
                         Console.WriteLine(word);
                     }
-                }
+                }*/
 
                 //3
-                RemoveWordsThatStartWithConsonant(text, 3);
+                //RemoveWordsThatStartWithConsonant(text, 3);
+                
 
                 //4
-                ReplaceWordsOfLength(text.Sentences[0], 6, "ururuururu");
-
-                //Console.WriteLine(text);
+                //ReplaceWordsOfLength(text.Sentences[0], 6, "ururuururu");
+                Console.WriteLine(text);
+                //Console.WriteLine(text);*/
             }
             catch (Exception e)
             {
@@ -102,7 +107,7 @@ namespace T2
         static IEnumerable<Sentence.Sentence> GetQuestionSentences(Text text)
         {
             var questionSentences = from s in text.Sentences
-                where (s.Items[s.Items.Count - 1]).Value.Equals("?")
+                where s.Items[s.Items.Count - 1].Value.Equals("?")
                 select s;
             return questionSentences;
         }
@@ -119,14 +124,14 @@ namespace T2
         static string ReadFileWithStream(string path)
         {
             StringBuilder builder = new StringBuilder();
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader streamReader = new StreamReader(path))
             {
                 string line;
-                while ((line = sr.ReadLine()) != null)
+                while ((line = streamReader.ReadLine()) != null)
                 {
                     builder.Append(line);
                 }
-                sr.Close();
+                streamReader.Close();
             }
 
             return builder.ToString();
@@ -135,7 +140,6 @@ namespace T2
 
         static string ReadFile(string name)
         {
-            //TODO: StreamReader
             return File.ReadAllText(Environment.CurrentDirectory + "/" + name);
         }
     }
