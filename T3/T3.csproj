@@ -38,14 +38,16 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Call.cs" />
         <Compile Include="Client.cs" />
         <Compile Include="Company\Company.cs" />
         <Compile Include="Enums\CallRespond.cs" />
         <Compile Include="Enums\ClientDesire.cs" />
         <Compile Include="Enums\Status.cs" />
-        <Compile Include="EventArgs\CallEventArgs.cs" />
-        <Compile Include="EventArgs\CallRespondEventArgs.cs" />
+        <Compile Include="EventArgs\OnCallEventArgs.cs" />
+        <Compile Include="EventArgs\OnCallRespondEventArgs.cs" />
         <Compile Include="EventArgs\OnConnectionChangedEventArgs.cs" />
+        <Compile Include="Station\Contract.cs" />
         <Compile Include="Station\Port.cs" />
         <Compile Include="Station\Station.cs" />
         <Compile Include="Tariff.cs" />
