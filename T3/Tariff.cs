@@ -2,12 +2,10 @@
 {
     public class Tariff
     {
-        public Tariff(int moneyPerCallMinute, int moneyPerConnectionMinute)
+        public Tariff(int moneyPerCallMinute)
         {
             MoneyPerCallMinute = moneyPerCallMinute;
-            MoneyPerConnectionMinute = moneyPerConnectionMinute;
         }
         public int MoneyPerCallMinute { get;}
-        public int MoneyPerConnectionMinute { get; }
     }
 }

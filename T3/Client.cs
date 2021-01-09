@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using T3.Enums;
 using T3.EventArgs;
 
@@ -8,8 +7,9 @@ namespace T3
     public class Client
     {
         public static Random Random;
-        public string Name { get; }
-        public Terminal Terminal { get; set; }
+        public Terminal Terminal { get; }
+
+        public Tariff Tariff { get; }
         public ClientDesire Desire { get; private set; }
 
         static Client()
@@ -17,42 +17,24 @@ namespace T3
             Random = new Random(0);
         }
 
-        public Client(Terminal terminal, string name)
+        public Client(Terminal terminal, Tariff tariff)
         {
             Terminal = terminal;
-            Name = name;
+            Tariff = tariff;
 
             Terminal.OnCallEvent += OnCall;
             Terminal.OnCallRespondEvent += OnOutgoingCallRespond;
         }
-        
-        
+
 
         public void Live()
         {
             Think();
-            switch (Desire)
+            if (Desire == ClientDesire.Active)
             {
-                case ClientDesire.Active:
-                {
-                    //TODO: make call
-                    break;
-                }
-                case ClientDesire.Awake:
-                {
-                    //TODO: accept calls
-                    break;
-                }
-                case ClientDesire.Talking:
-                {
-                    //TODO: talk
-                    break;
-                }
-                default:
-                {
-                    //TODO: i sleep
-                    break;
-                }
+                //TODO: make call
+                int target = Terminal.Port.Station.GetRandomPortNumberExcept(Terminal.Port.Number);
+                Terminal.OnCallEvent.Invoke(new OnCallEventArgs(Terminal.Port.Station, Terminal.Port.Number, target));
             }
         }
 
@@ -64,7 +46,7 @@ namespace T3
             {
                 if (Desire != ClientDesire.Talking)
                     Desire = ClientDesire.Sleep;
-                else 
+                else
                     Desire = ClientDesire.Talking;
                 return;
             }
@@ -104,7 +86,6 @@ namespace T3
                             args.TargetPortNumber, CallRespond.Rejected));
                         break;
                     }
-
                 }
             }
         }

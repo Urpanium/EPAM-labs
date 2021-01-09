@@ -10,6 +10,10 @@ namespace T3
     {
         public List<Port> Ports { get; }
 
+        public delegate void StationHandler(System.EventArgs eventArgs);
+
+        public StationHandler OnCallOccuredEvent;
+
         public Station(IEnumerable<Port> ports)
         {
             Ports = ports.ToList();
@@ -17,31 +21,25 @@ namespace T3
 
         public Station(int portsCount)
         {
+            Ports = new List<Port>();
             for (int i = 0; i < portsCount; i++)
             {
-                Port port = new Port(i + 1);
-                
+                Port port = new Port(this, i + 1);
+
                 port.OnCallEvent += OnPortCall;
                 port.OnCallRespondEvent += OnPortCallRespond;
-                
+
                 Ports.Add(port);
             }
         }
 
-        //when someone decides to make a call
-        private void OnPortCall(System.EventArgs eventArgs)
+        public int GetRandomPortNumberExcept(int portNumber)
         {
-            OnCallEventArgs args = (OnCallEventArgs) eventArgs;
-            Port caller = FindPortByPortNumber(args.CallerPortNumber);
-            Port target = FindPortByPortNumber(args.TargetPortNumber);
-            if (!target.IsConnected)
-            {
-                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
-                    args.TargetPortNumber, CallRespond.Disconnected));
-                return;
-            }
-
-            target.OnCallEvent.Invoke(new OnCallEventArgs(caller.Number, target.Number));
+            Random random = new Random();
+            int firstTry = random.Next(Ports.Count);
+            if (Ports[firstTry].Number == portNumber)
+                return (firstTry + random.Next(Ports.Count - 1)) % Ports.Count;
+            return firstTry;
         }
 
 
@@ -73,15 +71,33 @@ namespace T3
             terminal.OnConnectionChangedEvent.Invoke(
                 new OnConnectionChangedEventArgs(false, terminal, correspondingPort));
         }
-        
-        
+
+        //when someone decides to make a call
+        private void OnPortCall(System.EventArgs eventArgs)
+        {
+            OnCallEventArgs args = (OnCallEventArgs) eventArgs;
+            Port caller = FindPortByPortNumber(args.CallerPortNumber);
+            Port target = FindPortByPortNumber(args.TargetPortNumber);
+            if (!target.IsConnected)
+            {
+                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
+                    args.TargetPortNumber, CallRespond.Disconnected));
+                return;
+            }
+
+            target.OnCallEvent.Invoke(new OnCallEventArgs(this, caller.Number, target.Number));
+        }
+
         private void OnPortCallRespond(System.EventArgs eventArgs)
         {
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            CallRespond respond = args.CallRespond;
             Port caller = FindPortByPortNumber(args.CallerPortNumber);
-            //pass the information to port
+            // pass the information to port
             caller.OnCallRespondEvent.Invoke(eventArgs);
+            // if call is accepted
+            if (args.CallRespond == CallRespond.Accepted)
+                // add this call to company statistics using the event
+                OnCallOccuredEvent.Invoke(eventArgs);
         }
 
         private Port FindPortByPortNumber(int portNumber)

@@ -47,7 +47,6 @@
         <Compile Include="EventArgs\OnCallEventArgs.cs" />
         <Compile Include="EventArgs\OnCallRespondEventArgs.cs" />
         <Compile Include="EventArgs\OnConnectionChangedEventArgs.cs" />
-        <Compile Include="Station\Contract.cs" />
         <Compile Include="Station\Port.cs" />
         <Compile Include="Station\Station.cs" />
         <Compile Include="Tariff.cs" />
