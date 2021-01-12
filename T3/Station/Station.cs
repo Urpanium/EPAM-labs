@@ -48,7 +48,9 @@ namespace T3
         {
             if (port.IsConnected)
                 throw new Exception("Port is already connected!");
-            port.OnConnectionChangedEvent.Invoke(new OnConnectionChangedEventArgs(true, terminal, port));
+            OnConnectionChangedEventArgs args = new OnConnectionChangedEventArgs(true, terminal, port);
+            port.OnConnectionChangedEvent.Invoke(args);
+            terminal.OnConnectionChangedEvent.Invoke(args);
         }
 
         public void DisconnectTerminal(Terminal terminal)
@@ -76,28 +78,64 @@ namespace T3
         private void OnPortCall(System.EventArgs eventArgs)
         {
             OnCallEventArgs args = (OnCallEventArgs) eventArgs;
+            Console.WriteLine(
+                $"Station: OnCallEvent, Target: {args.TargetPortNumber}, Caller: {args.CallerPortNumber}");
             Port caller = FindPortByPortNumber(args.CallerPortNumber);
-            Port target = FindPortByPortNumber(args.TargetPortNumber);
-            if (!target.IsConnected)
+            if (IsPortWithNumberConnected(args.TargetPortNumber))
             {
-                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
-                    args.TargetPortNumber, CallRespond.Disconnected));
-                return;
-            }
+                Port target = FindPortByPortNumber(args.TargetPortNumber);
+                /*if (!target.IsConnected)
+                {
+                    caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
+                        args.TargetPortNumber, CallRespond.Disconnected));
+                    return;
+                }*/
 
-            target.OnCallEvent.Invoke(new OnCallEventArgs(this, caller.Number, target.Number));
+                // looks ugly, but it works
+                //target.OnCallEvent -= OnPortCall;
+                target.OnCallEvent.Invoke(args);
+                //target.OnCallEvent += OnPortCall;
+            }
+            else
+            {
+                Console.WriteLine("Station: No such port with connected terminal was found");
+                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
+                    args.TargetPortNumber, args.TargetPortNumber, CallRespond.Disconnected));
+            }
         }
 
         private void OnPortCallRespond(System.EventArgs eventArgs)
         {
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            Port caller = FindPortByPortNumber(args.CallerPortNumber);
-            // pass the information to port
-            caller.OnCallRespondEvent.Invoke(eventArgs);
-            // if call is accepted
-            if (args.CallRespond == CallRespond.Accepted)
-                // add this call to company statistics using the event
-                OnCallOccuredEvent.Invoke(eventArgs);
+            Console.WriteLine(
+                $"Station: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}, Responded: {args.ResponderPortNumber}");
+            if (args.ResponderPortNumber == args.TargetPortNumber)
+            {
+                /*int sendTo = args.ResponderPortNumber == args.CallerPortNumber
+                    ? args.TargetPortNumber
+                    : args.CallerPortNumber;*/
+                Port caller = FindPortByPortNumber(args.CallerPortNumber);
+                // pass the information to port
+
+                caller.OnCallEvent -= OnPortCallRespond;
+                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
+                    args.TargetPortNumber, args.CallerPortNumber, args.CallRespond));
+                caller.OnCallEvent += OnPortCallRespond;
+
+                // if call is accepted
+                if (args.CallRespond == CallRespond.Accepted)
+                    // add this call to company statistics using the event
+                    OnCallOccuredEvent.Invoke(eventArgs);
+            }
+        }
+
+        private bool IsPortWithNumberConnected(int portNumber)
+        {
+            var correspondingPortEnumerable = from p in Ports
+                where p.Number == portNumber
+                select p;
+            List<Port> correspondingPortList = correspondingPortEnumerable.ToList();
+            return correspondingPortList.Count >= 1;
         }
 
         private Port FindPortByPortNumber(int portNumber)

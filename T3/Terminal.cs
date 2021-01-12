@@ -1,4 +1,5 @@
-﻿using T3.EventArgs;
+﻿using System;
+using T3.EventArgs;
 
 namespace T3
 {
@@ -23,15 +24,34 @@ namespace T3
             Number = number;
             OnConnectionChangedEvent += OnConnectionChanged;
             OnCallEvent += OnCall;
-
+            OnCallRespondEvent += OnCallRespond;
         }
 
-        
 
         private void OnCall(System.EventArgs eventArgs)
         {
             OnCallEventArgs args = (OnCallEventArgs) eventArgs;
-            // why
+            Console.WriteLine(
+                $"Terminal: OnCallEvent, Target: {args.TargetPortNumber}, Caller: {args.CallerPortNumber}");
+            // if it is our call
+            if (args.CallerPortNumber == Port.Number)
+            {
+                if (!IsConnected)
+                    throw new Exception("Can't make call because terminal is not connected!");
+
+                Port.OnCallEvent.Invoke(args);
+            }
+        }
+
+        private void OnCallRespond(System.EventArgs eventArgs)
+        {
+            if (!IsConnected)
+                throw new Exception("wtf");
+
+            OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
+            Console.WriteLine(
+                $"Terminal: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}");
+
         }
 
         private void OnConnectionChanged(System.EventArgs eventArgs)
