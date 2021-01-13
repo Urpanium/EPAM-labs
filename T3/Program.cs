@@ -9,7 +9,7 @@ namespace T3
         {
             Tariff tariff = new Tariff(10);
             Company company = MakeCompany(10, 50, tariff);
-            int iterations = 1;
+            int iterations = 10;
             for (int i = 0; i < iterations; i++)
             {
                 Console.WriteLine($"Iteration {i + 1}");

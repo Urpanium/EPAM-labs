@@ -15,6 +15,11 @@ namespace T3
         {
             Stations = stations.ToList();
             Clients = clients.ToList();
+            Calls = new List<Call>();
+            foreach (var station in Stations)
+            {
+                station.OnCallOccuredEvent += OnCallOccured;
+            }
         }
 
         public int GetBillForClient(Client client)
@@ -59,11 +64,13 @@ namespace T3
 
         private void OnCallOccured(System.EventArgs eventArgs)
         {
-            OnCallEventArgs args = (OnCallEventArgs) eventArgs;
+            OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
+            
             Client caller = FindClientByPortNumber(args.Station, args.CallerPortNumber);
             Client target = FindClientByPortNumber(args.Station, args.TargetPortNumber);
             Random random = new Random();
             Call call = new Call(caller, target, (float) random.NextDouble());
+            Console.WriteLine($"Company: OnCallOccured, Length: {call.Length}");
             Calls.Add(call);
         }
     }

@@ -61,7 +61,7 @@ namespace T3
                 if (IsConnected)
                     ConnectedTerminal.OnCallEvent.Invoke(eventArgs);
                 else
-                    OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber, args.TargetPortNumber,
+                    OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Station, args.CallerPortNumber, args.TargetPortNumber,
                         args.TargetPortNumber, CallRespond.Disconnected));
             }
         }

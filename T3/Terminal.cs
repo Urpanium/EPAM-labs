@@ -51,7 +51,10 @@ namespace T3
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
             Console.WriteLine(
                 $"Terminal: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}");
-
+            if (args.TargetPortNumber == Port.Number)
+            {
+                Port.OnCallRespondEvent.Invoke(args);
+            }
         }
 
         private void OnConnectionChanged(System.EventArgs eventArgs)

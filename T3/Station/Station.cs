@@ -92,14 +92,14 @@ namespace T3
                 }*/
 
                 // looks ugly, but it works
-                //target.OnCallEvent -= OnPortCall;
+                target.OnCallEvent -= OnPortCall;
                 target.OnCallEvent.Invoke(args);
-                //target.OnCallEvent += OnPortCall;
+                target.OnCallEvent += OnPortCall;
             }
             else
             {
                 Console.WriteLine("Station: No such port with connected terminal was found");
-                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
+                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(this, args.CallerPortNumber,
                     args.TargetPortNumber, args.TargetPortNumber, CallRespond.Disconnected));
             }
         }
@@ -111,22 +111,25 @@ namespace T3
                 $"Station: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}, Responded: {args.ResponderPortNumber}");
             if (args.ResponderPortNumber == args.TargetPortNumber)
             {
+                //Console.WriteLine("Station: ");
                 /*int sendTo = args.ResponderPortNumber == args.CallerPortNumber
                     ? args.TargetPortNumber
                     : args.CallerPortNumber;*/
                 Port caller = FindPortByPortNumber(args.CallerPortNumber);
                 // pass the information to port
 
-                caller.OnCallEvent -= OnPortCallRespond;
-                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(args.CallerPortNumber,
+                //caller.OnCallRespondEvent -= OnPortCallRespond;
+                caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(this, args.CallerPortNumber,
                     args.TargetPortNumber, args.CallerPortNumber, args.CallRespond));
-                caller.OnCallEvent += OnPortCallRespond;
+                //caller.OnCallRespondEvent += OnPortCallRespond;
 
                 // if call is accepted
                 if (args.CallRespond == CallRespond.Accepted)
                     // add this call to company statistics using the event
                     OnCallOccuredEvent.Invoke(eventArgs);
             }
+
+            
         }
 
         private bool IsPortWithNumberConnected(int portNumber)
