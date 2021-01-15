@@ -6,22 +6,6 @@ namespace T3
 {
     public class Port
     {
-        public bool IsConnected { get; private set; }
-        public Status Status { get; private set; }
-
-        public Station Station { get; }
-        public int Number { get; } // port number
-        public Terminal ConnectedTerminal { get; private set; }
-
-        public delegate void PortHandler(System.EventArgs eventArgs);
-
-        // port connection
-        public PortHandler OnConnectionChangedEvent { get; } // fires when phone connection changes
-
-        //calls
-        public PortHandler OnCallEvent { get; set; }
-        public PortHandler OnCallRespondEvent { get; set; }
-
         public Port(Station station, int number)
         {
             Number = number;
@@ -33,6 +17,20 @@ namespace T3
             OnCallEvent += OnCall;
             OnCallRespondEvent += OnCallRespond;
         }
+        public bool IsConnected { get; private set; }
+        public Status Status { get; private set; }
+        public Station Station { get; }
+        public int Number { get; } // port number
+        public Terminal ConnectedTerminal { get; private set; }
+
+        public delegate void PortHandler(System.EventArgs eventArgs);
+
+        // port connection
+        public PortHandler OnConnectionChangedEvent { get; } // fires when phone connection changes
+        public PortHandler OnCallEvent { get; set; }
+        public PortHandler OnCallRespondEvent { get; set; }
+
+        
 
         public void OnConnectionChanged(System.EventArgs eventArgs)
         {
@@ -47,9 +45,6 @@ namespace T3
         public void OnCall(System.EventArgs eventArgs)
         {
             OnCallEventArgs args = (OnCallEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Port {Number}: OnCallEvent, Target: {args.TargetPortNumber}, Caller: {args.CallerPortNumber}");
-
             // when call occurs
             // in every case port will become busy
             Status = Status.Busy;
@@ -70,9 +65,7 @@ namespace T3
         {
             Status = Status.Free;
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Port {Number}: OnCallRespondEvent, CallRespond: {args.CallRespond}, Target: {args.TargetPortNumber}, Caller: {args.CallerPortNumber}");
-
+            
             // if someone responded to us (so this port number will be different)
             if (args.CallerPortNumber == Number)
             {

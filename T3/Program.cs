@@ -9,17 +9,19 @@ namespace T3
         {
             Tariff tariff = new Tariff(10);
             Company company = MakeCompany(10, 50, tariff);
-            int iterations = 10;
+            int iterations = 1000;
             for (int i = 0; i < iterations; i++)
             {
-                Console.WriteLine($"Iteration {i + 1}");
+                Console.WriteLine($"Iteration #{i + 1}");
                 for (int j = 0; j < company.Clients.Count; j++)
                 {
                     Client client = company.Clients[j];
-                    Console.WriteLine($"Client #{j + 1}: ");
+                    
                     client.Live();
                 }
             }
+            
+            ShowCalls(company);
         }
 
         static Company MakeCompany(int stationsCount, int clientsCount, Tariff tariff)
@@ -49,6 +51,15 @@ namespace T3
 
             Company company = new Company(stations, clients);
             return company;
+        }
+
+        static void ShowCalls(Company company)
+        {
+            for (int i = 0; i < company.Calls.Count; i++)
+            {
+                Call call = company.Calls[i];
+                Console.WriteLine($"Call #{i + 1}: Length = {call.Length}, Time = {call.DateTime}, Target = {call.Target.Terminal.Port.Number}, Caller = {call.Caller.Terminal.Port.Number}");
+            }
         }
     }
 }

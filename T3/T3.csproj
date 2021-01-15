@@ -38,21 +38,21 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Call.cs" />
-        <Compile Include="Client.cs" />
+        <Compile Include="Company\Call.cs" />
+        <Compile Include="Company\Client\Client.cs" />
+        <Compile Include="Company\Client\Terminal.cs" />
         <Compile Include="Company\Company.cs" />
+        <Compile Include="Company\Station\Port.cs" />
+        <Compile Include="Company\Station\Station.cs" />
+        <Compile Include="Company\Tariff.cs" />
         <Compile Include="Enums\CallRespond.cs" />
         <Compile Include="Enums\ClientDesire.cs" />
         <Compile Include="Enums\Status.cs" />
         <Compile Include="EventArgs\OnCallEventArgs.cs" />
         <Compile Include="EventArgs\OnCallRespondEventArgs.cs" />
         <Compile Include="EventArgs\OnConnectionChangedEventArgs.cs" />
-        <Compile Include="Station\Port.cs" />
-        <Compile Include="Station\Station.cs" />
-        <Compile Include="Tariff.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Terminal.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

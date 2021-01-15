@@ -8,7 +8,6 @@ namespace T3
     {
         public static Random Random;
         public Terminal Terminal { get; }
-
         public Tariff Tariff { get; }
         public ClientDesire Desire { get; private set; }
 
@@ -30,16 +29,11 @@ namespace T3
         public void Live()
         {
             Think();
-            Console.WriteLine($"State: {Desire} ");
             if (Desire == ClientDesire.Active)
             {
-                //TODO: make call
                 int target = Terminal.Port.Station.GetRandomPortNumberExcept(Terminal.Port.Number);
-                Console.WriteLine($"Calling {target}");
-                Terminal.OnCallEvent.Invoke(new OnCallEventArgs(Terminal.Port.Station, Terminal.Port.Number, target));
+                Terminal.OnCallEvent.Invoke(new OnCallEventArgs(Terminal.Port.Number, target));
             }
-
-            Console.WriteLine();
         }
 
         private void Think()
@@ -74,24 +68,25 @@ namespace T3
                 {
                     case ClientDesire.Active:
                     {
-                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station, args.CallerPortNumber,
+                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
+                            args.CallerPortNumber,
                             args.TargetPortNumber, args.TargetPortNumber, CallRespond.Accepted));
-                        Console.WriteLine();
                         break;
                     }
                     case ClientDesire.Awake:
                     {
-                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station, args.CallerPortNumber,
+                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
+                            args.CallerPortNumber,
                             args.TargetPortNumber, args.TargetPortNumber, CallRespond.Accepted));
                         break;
                     }
                     default:
                     {
-                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station, args.CallerPortNumber,
+                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
+                            args.CallerPortNumber,
                             args.TargetPortNumber, args.TargetPortNumber, CallRespond.Rejected));
                         break;
                     }
-                    
                 }
             }
         }
@@ -99,8 +94,6 @@ namespace T3
         private void OnOutgoingCallRespond(System.EventArgs eventArgs)
         {
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Client: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}");
             CallRespond respond = args.CallRespond;
 
             //if it was our call

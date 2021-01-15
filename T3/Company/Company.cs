@@ -7,9 +7,12 @@ namespace T3
 {
     public class Company
     {
-        public List<Station> Stations { get; }
-        public List<Call> Calls { get; }
-        public List<Client> Clients { get; }
+        private static DateTime StartDateTime;
+
+        static Company()
+        {
+            StartDateTime = DateTime.Now;
+        }
 
         public Company(IEnumerable<Station> stations, IEnumerable<Client> clients)
         {
@@ -21,6 +24,11 @@ namespace T3
                 station.OnCallOccuredEvent += OnCallOccured;
             }
         }
+
+        public List<Station> Stations { get; }
+        public List<Call> Calls { get; }
+        public List<Client> Clients { get; }
+
 
         public int GetBillForClient(Client client)
         {
@@ -41,12 +49,13 @@ namespace T3
                 from port in station.Ports
                 where port.Number == portNumber
                 select port.ConnectedTerminal;
+
             List<Terminal> correspondingTerminalsList = correspondingTerminalsEnumerable.ToList();
 
             if (correspondingTerminalsList.Count > 1)
                 throw new Exception("why");
             if (correspondingTerminalsList.Count < 1)
-                throw new Exception("No terminals found for this port");
+                return null;
 
             Terminal terminal = correspondingTerminalsList[0];
             var correspondingClientEnumerable = from client in Clients
@@ -57,7 +66,7 @@ namespace T3
             if (correspondingClientList.Count > 1)
                 throw new Exception("Two or more clients found for this terminal! (WTF)");
             if (correspondingClientList.Count < 1)
-                throw new Exception("No clients found for this terminal!");
+                return null;
 
             return correspondingClientList[0];
         }
@@ -65,12 +74,13 @@ namespace T3
         private void OnCallOccured(System.EventArgs eventArgs)
         {
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            
+
             Client caller = FindClientByPortNumber(args.Station, args.CallerPortNumber);
             Client target = FindClientByPortNumber(args.Station, args.TargetPortNumber);
+            Int64 deltaTime = (DateTime.Now.Ticks - StartDateTime.Ticks);
             Random random = new Random();
-            Call call = new Call(caller, target, (float) random.NextDouble());
-            Console.WriteLine($"Company: OnCallOccured, Length: {call.Length}");
+            Int64 now = Math.Min((deltaTime + random.Next(10)) * 1000000, DateTime.MaxValue.Ticks);
+            Call call = new Call(caller, target, new DateTime(now), (float) random.NextDouble());
             Calls.Add(call);
         }
     }

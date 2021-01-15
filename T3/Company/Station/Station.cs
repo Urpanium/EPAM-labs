@@ -8,12 +8,11 @@ namespace T3
 {
     public class Station
     {
-        public List<Port> Ports { get; }
-
-        public delegate void StationHandler(System.EventArgs eventArgs);
-
-        public StationHandler OnCallOccuredEvent;
-
+        static Station()
+        {
+            _random = new Random();
+        }
+        
         public Station(IEnumerable<Port> ports)
         {
             Ports = ports.ToList();
@@ -33,12 +32,21 @@ namespace T3
             }
         }
 
+        private static Random _random;
+        public List<Port> Ports { get; }
+
+        public delegate void StationHandler(System.EventArgs eventArgs);
+
+        public StationHandler OnCallOccuredEvent;
+
+        
+
         public int GetRandomPortNumberExcept(int portNumber)
         {
-            Random random = new Random();
-            int firstTry = random.Next(Ports.Count);
+            
+            int firstTry = _random.Next(Ports.Count);
             if (Ports[firstTry].Number == portNumber)
-                return (firstTry + random.Next(Ports.Count - 1)) % Ports.Count;
+                return (firstTry + _random.Next(Ports.Count - 1)) % Ports.Count;
             return firstTry;
         }
 
@@ -78,8 +86,6 @@ namespace T3
         private void OnPortCall(System.EventArgs eventArgs)
         {
             OnCallEventArgs args = (OnCallEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Station: OnCallEvent, Target: {args.TargetPortNumber}, Caller: {args.CallerPortNumber}");
             Port caller = FindPortByPortNumber(args.CallerPortNumber);
             if (IsPortWithNumberConnected(args.TargetPortNumber))
             {
@@ -98,7 +104,7 @@ namespace T3
             }
             else
             {
-                Console.WriteLine("Station: No such port with connected terminal was found");
+                
                 caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(this, args.CallerPortNumber,
                     args.TargetPortNumber, args.TargetPortNumber, CallRespond.Disconnected));
             }
@@ -107,26 +113,22 @@ namespace T3
         private void OnPortCallRespond(System.EventArgs eventArgs)
         {
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Station: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}, Responded: {args.ResponderPortNumber}");
             if (args.ResponderPortNumber == args.TargetPortNumber)
             {
-                //Console.WriteLine("Station: ");
-                /*int sendTo = args.ResponderPortNumber == args.CallerPortNumber
-                    ? args.TargetPortNumber
-                    : args.CallerPortNumber;*/
                 Port caller = FindPortByPortNumber(args.CallerPortNumber);
                 // pass the information to port
 
-                //caller.OnCallRespondEvent -= OnPortCallRespond;
+                // caller.OnCallRespondEvent -= OnPortCallRespond;
                 caller.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(this, args.CallerPortNumber,
                     args.TargetPortNumber, args.CallerPortNumber, args.CallRespond));
-                //caller.OnCallRespondEvent += OnPortCallRespond;
+                // caller.OnCallRespondEvent += OnPortCallRespond;
 
                 // if call is accepted
                 if (args.CallRespond == CallRespond.Accepted)
+                {
                     // add this call to company statistics using the event
                     OnCallOccuredEvent.Invoke(eventArgs);
+                }
             }
 
             
@@ -150,7 +152,7 @@ namespace T3
             if (correspondingPortList.Count > 1)
                 throw new Exception("There are two or more ports with same connected terminal!");
             if (correspondingPortList.Count < 1)
-                throw new Exception("No port was found with such terminal connected!");
+                return null;
             return correspondingPortList[0];
         }
     }

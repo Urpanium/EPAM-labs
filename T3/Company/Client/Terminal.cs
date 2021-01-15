@@ -31,8 +31,6 @@ namespace T3
         private void OnCall(System.EventArgs eventArgs)
         {
             OnCallEventArgs args = (OnCallEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Terminal: OnCallEvent, Target: {args.TargetPortNumber}, Caller: {args.CallerPortNumber}");
             // if it is our call
             if (args.CallerPortNumber == Port.Number)
             {
@@ -49,8 +47,6 @@ namespace T3
                 throw new Exception("wtf");
 
             OnCallRespondEventArgs args = (OnCallRespondEventArgs) eventArgs;
-            Console.WriteLine(
-                $"Terminal: OnCallRespondEvent, CallRespond: {args.CallRespond}, Caller: {args.CallerPortNumber}, Target: {args.TargetPortNumber}");
             if (args.TargetPortNumber == Port.Number)
             {
                 Port.OnCallRespondEvent.Invoke(args);
