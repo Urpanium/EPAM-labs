@@ -7,11 +7,13 @@ namespace T3
 {
     public class Company
     {
-        private static DateTime StartDateTime;
+        private static DateTime _startDateTime;
+        private static Random _random;
 
         static Company()
         {
-            StartDateTime = DateTime.Now;
+            _startDateTime = DateTime.Now;
+            _random = new Random();
         }
 
         public Company(IEnumerable<Station> stations, IEnumerable<Client> clients)
@@ -77,10 +79,10 @@ namespace T3
 
             Client caller = FindClientByPortNumber(args.Station, args.CallerPortNumber);
             Client target = FindClientByPortNumber(args.Station, args.TargetPortNumber);
-            Int64 deltaTime = (DateTime.Now.Ticks - StartDateTime.Ticks);
-            Random random = new Random();
-            Int64 now = Math.Min((deltaTime + random.Next(10)) * 1000000, DateTime.MaxValue.Ticks);
-            Call call = new Call(caller, target, new DateTime(now), (float) random.NextDouble());
+            Int64 deltaTime = DateTime.Now.Ticks - _startDateTime.Ticks;
+            
+            Int64 now = Math.Min(deltaTime * 1000000, DateTime.MaxValue.Ticks);
+            Call call = new Call(caller, target, new DateTime(now), (float) _random.NextDouble());
             Calls.Add(call);
         }
     }

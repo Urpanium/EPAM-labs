@@ -22,6 +22,7 @@ namespace T3
             }
             
             ShowCalls(company);
+            // GetBillForClient(Client)
         }
 
         static Company MakeCompany(int stationsCount, int clientsCount, Tariff tariff)
