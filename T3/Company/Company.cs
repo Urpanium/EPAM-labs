@@ -32,11 +32,12 @@ namespace T3
         public List<Client> Clients { get; }
 
 
-        public int GetBillForClient(Client client)
+        public int GetBillForClient(Client client, DateTime fromTime, DateTime toTime)
         {
             int sum = 0;
             var clientCalls = from c in Calls
-                where c.Caller.Equals(client) || c.Target.Equals(client)
+                where (c.Caller.Equals(client) || c.Target.Equals(client)) && 
+                      c.DateTime < toTime && c.DateTime > fromTime
                 select c;
 
             foreach (var call in clientCalls)
@@ -80,7 +81,7 @@ namespace T3
             Client caller = FindClientByPortNumber(args.Station, args.CallerPortNumber);
             Client target = FindClientByPortNumber(args.Station, args.TargetPortNumber);
             Int64 deltaTime = DateTime.Now.Ticks - _startDateTime.Ticks;
-            
+
             Int64 now = Math.Min(deltaTime * 1000000, DateTime.MaxValue.Ticks);
             Call call = new Call(caller, target, new DateTime(now), (float) _random.NextDouble());
             Calls.Add(call);
