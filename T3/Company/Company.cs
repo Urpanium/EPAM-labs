@@ -37,7 +37,7 @@ namespace T3
             int sum = 0;
             var clientCalls = from c in Calls
                 where (c.Caller.Equals(client) || c.Target.Equals(client)) && 
-                      c.DateTime < toTime && c.DateTime > fromTime
+                      DateTime.Compare(c.DateTime, toTime) >= 0 && DateTime.Compare(c.DateTime, fromTime) <= 0
                 select c;
 
             foreach (var call in clientCalls)
