@@ -32,6 +32,20 @@ namespace T3
         public List<Client> Clients { get; }
 
 
+        
+        public int GetBillForClient(Client client)
+        {
+            int sum = 0;
+            var clientCalls = from c in Calls
+                where c.Caller.Equals(client) || c.Target.Equals(client)
+                select c;
+
+            foreach (var call in clientCalls)
+                sum += (int) Math.Ceiling(call.Length * client.Tariff.MoneyPerCallMinute);
+
+            return sum;
+        }
+        
         public int GetBillForClient(Client client, DateTime fromTime, DateTime toTime)
         {
             int sum = 0;
@@ -41,9 +55,22 @@ namespace T3
                 select c;
 
             foreach (var call in clientCalls)
-                sum += (int) Math.Ceiling(call.Length * client.Tariff.MoneyPerCallMinute);
+                sum += CalculateCallPrice(call, client.Tariff);
 
             return sum;
+        }
+        
+        public IEnumerable<Call> GetCallsForClient(Client client, DateTime fromTime, DateTime toTime, float fromSum, float toSum)
+        {
+            int sum = 0;
+            var clientCalls = from c in Calls
+                where (c.Caller.Equals(client) || c.Target.Equals(client)) &&
+                      DateTime.Compare(c.DateTime, toTime) >= 0 && DateTime.Compare(c.DateTime, fromTime) <= 0 &&
+                      CalculateCallPrice(c, client.Tariff) >= fromSum && CalculateCallPrice(c, client.Tariff) <= toSum
+                select c;
+
+
+            return clientCalls;
         }
 
         public Client FindClientByPortNumber(Station station, int portNumber)
@@ -85,6 +112,11 @@ namespace T3
             Int64 now = Math.Min(deltaTime * 1000000, DateTime.MaxValue.Ticks);
             Call call = new Call(caller, target, new DateTime(now), (float) _random.NextDouble());
             Calls.Add(call);
+        }
+
+        private int CalculateCallPrice(Call call, Tariff tariff)
+        {
+            return (int) Math.Ceiling(call.Length * tariff.MoneyPerCallMinute);
         }
     }
 }
