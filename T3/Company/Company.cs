@@ -62,7 +62,6 @@ namespace T3
         
         public IEnumerable<Call> GetCallsForClient(Client client, DateTime fromTime, DateTime toTime, float fromSum, float toSum)
         {
-            int sum = 0;
             var clientCalls = from c in Calls
                 where (c.Caller.Equals(client) || c.Target.Equals(client)) &&
                       DateTime.Compare(c.DateTime, toTime) >= 0 && DateTime.Compare(c.DateTime, fromTime) <= 0 &&
