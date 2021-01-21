@@ -6,6 +6,6 @@
         {
             MoneyPerCallMinute = moneyPerCallMinute;
         }
-        public int MoneyPerCallMinute { get;}
+        public int MoneyPerCallMinute { get; }
     }
 }

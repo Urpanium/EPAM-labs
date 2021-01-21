@@ -72,7 +72,7 @@ namespace T3
                 throw new Exception("There are two or more ports with same connected terminal!");
             if (correspondingPortList.Count < 1)
                 throw new Exception("No port was found with such terminal connected!");
-            Port correspondingPort = correspondingPortList[0];
+            Port correspondingPort = correspondingPortList.Single();
             if (!correspondingPort.IsConnected)
                 throw new Exception("Port is already disconnected!");
 

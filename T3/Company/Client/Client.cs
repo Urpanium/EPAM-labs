@@ -62,31 +62,33 @@ namespace T3
         {
             OnCallEventArgs args = (OnCallEventArgs) eventArgs;
             //if someone calls us
-            if (args.CallerPortNumber != Terminal.Port.Number)
+            if (args.CallerPortNumber == Terminal.Port.Number)
             {
-                switch (Desire)
+                return;
+            }
+
+            switch (Desire)
+            {
+                case ClientDesire.Active:
                 {
-                    case ClientDesire.Active:
-                    {
-                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
-                            args.CallerPortNumber,
-                            args.TargetPortNumber, args.TargetPortNumber, CallRespond.Accepted));
-                        break;
-                    }
-                    case ClientDesire.Awake:
-                    {
-                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
-                            args.CallerPortNumber,
-                            args.TargetPortNumber, args.TargetPortNumber, CallRespond.Accepted));
-                        break;
-                    }
-                    default:
-                    {
-                        Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
-                            args.CallerPortNumber,
-                            args.TargetPortNumber, args.TargetPortNumber, CallRespond.Rejected));
-                        break;
-                    }
+                    Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
+                        args.CallerPortNumber,
+                        args.TargetPortNumber, args.TargetPortNumber, CallRespond.Accepted));
+                    break;
+                }
+                case ClientDesire.Awake:
+                {
+                    Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
+                        args.CallerPortNumber,
+                        args.TargetPortNumber, args.TargetPortNumber, CallRespond.Accepted));
+                    break;
+                }
+                default:
+                {
+                    Terminal.OnCallRespondEvent.Invoke(new OnCallRespondEventArgs(Terminal.Port.Station,
+                        args.CallerPortNumber,
+                        args.TargetPortNumber, args.TargetPortNumber, CallRespond.Rejected));
+                    break;
                 }
             }
         }
