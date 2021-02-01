@@ -12,6 +12,7 @@ namespace T3
         public Call(Client caller, Client target, DateTime dateTime, float length)
         {
             Caller = caller;
+            
             Target = target;
             DateTime = dateTime;
             Length = length;
