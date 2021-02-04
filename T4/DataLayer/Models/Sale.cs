@@ -4,6 +4,7 @@ namespace T4.DataLayer.Models
 {
     public class Sale
     {
+        public int Id { get; set; }
         public int Price { get; set; }
         public int ClientId { get; set; }
         public int ManagerId { get; set; }
