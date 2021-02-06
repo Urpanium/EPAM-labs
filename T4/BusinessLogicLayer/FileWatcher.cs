@@ -30,6 +30,7 @@ namespace T4.BusinessLogicLayer
         {
             _fileSystemWatcher.EnableRaisingEvents = true;
             _fileSystemWatcher.Changed += _fileHandler.OnDirectoryContentChanged;
+            //_fileSystemWatcher.C
         }
 
         public void Stop()

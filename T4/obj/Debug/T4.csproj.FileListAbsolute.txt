@@ -28,3 +28,8 @@ C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\System.Runtime.CompilerSe
 C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.dll
 C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.xml
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.Sinks.Console.dll
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.Sinks.File.dll
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.Sinks.Console.xml
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.Sinks.File.pdb
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Serilog.Sinks.File.xml
