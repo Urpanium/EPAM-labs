@@ -96,12 +96,13 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BusinessLogicLayer\Controller.cs" />
+        <Compile Include="BusinessLogicLayer\Worker.cs" />
+        <Compile Include="BusinessLogicLayer\DatabaseManager.cs" />
         <Compile Include="BusinessLogicLayer\FileHandler.cs" />
         <Compile Include="BusinessLogicLayer\FileWatcher.cs" />
         <Compile Include="DataAccessLayer\DatabaseContext.cs" />
         <Compile Include="DataLayer\Models\Client.cs" />
-        <Compile Include="DataLayer\Models\CSV\Sale.cs" />
+        <Compile Include="DataLayer\Models\CSV\LocalSale.cs" />
         <Compile Include="DataLayer\Models\Manager.cs" />
         <Compile Include="DataLayer\Models\Product.cs" />
         <Compile Include="DataLayer\Models\Sale.cs" />

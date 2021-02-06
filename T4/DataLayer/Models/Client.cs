@@ -7,12 +7,11 @@ namespace T4.DataLayer.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        
-        public ICollection<Sale> Sales { get; set; }
 
-        public Client()
+        public Client(string firstName, string lastName)
         {
-            Sales = new List<Sale>();
+            FirstName = firstName;
+            LastName = lastName;
         }
     }
 }
