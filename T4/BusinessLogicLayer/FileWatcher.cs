@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Serilog;
 
 namespace T4.BusinessLogicLayer
 {
@@ -7,21 +8,22 @@ namespace T4.BusinessLogicLayer
     {
         private FileSystemWatcher _fileSystemWatcher;
         private FileHandler _fileHandler;
-        
-        
-
-        /* public delegate void FileEvent(object s, FileSystemEventArgs e);
-        public FileEvent OnFileChangedEvent { get; set; } */
 
         public FileWatcher(string path, FileHandler fileHandler)
         {
             _fileHandler = fileHandler;
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
 
             _fileSystemWatcher = new FileSystemWatcher
             {
                 Path = path,
                 NotifyFilter = NotifyFilters.LastAccess
-                               | NotifyFilters.LastWrite,
+                               | NotifyFilters.LastWrite
+                               | NotifyFilters.DirectoryName
+                               | NotifyFilters.FileName,
                 Filter = "*.csv"
             };
         }
@@ -29,14 +31,14 @@ namespace T4.BusinessLogicLayer
         public void Start()
         {
             _fileSystemWatcher.EnableRaisingEvents = true;
-            _fileSystemWatcher.Changed += _fileHandler.OnDirectoryContentChanged;
-            //_fileSystemWatcher.C
+            _fileSystemWatcher.Created += _fileHandler.OnDirectoryContentChanged;
+            Log.Information($"Watching {_fileSystemWatcher.Path}");
         }
 
         public void Stop()
         {
             _fileSystemWatcher.EnableRaisingEvents = false;
-            _fileSystemWatcher.Changed -= _fileHandler.OnDirectoryContentChanged;
+            _fileSystemWatcher.Created -= _fileHandler.OnDirectoryContentChanged;
         }
 
         private bool _disposed;

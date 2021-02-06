@@ -1,8 +1,9 @@
-﻿using T4.DataAccessLayer;
+﻿using System;
+using T4.DataAccessLayer;
 
 namespace T4.BusinessLogicLayer
 {
-    public class Worker
+    public class Worker: IDisposable
     {
 
         private DatabaseManager _databaseManager;
@@ -23,7 +24,6 @@ namespace T4.BusinessLogicLayer
 
         public void Start()
         {
-            // wow so genius mmm
             _fileWatcher.Start();
         }
 
@@ -31,6 +31,32 @@ namespace T4.BusinessLogicLayer
         {
             _fileWatcher.Stop();
         }
+
+
+        private bool _disposed;
+
+        ~Worker()
+        {
+            Dispose();
+        }
         
+        private void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _fileWatcher.Dispose();
+                    _databaseManager.Dispose();
+                }
+            }
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

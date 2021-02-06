@@ -7,13 +7,16 @@ namespace T4.DataLayer.Models
     {
         public int Id { get; set; }
         public string LastName { get; set; }
-        public DateTime LastUpdate { get; set; }
         
+
+        public Manager()
+        {
+            
+        }
 
         public Manager(string lastName)
         {
             LastName = lastName;
-            LastUpdate = DateTime.MinValue;
         }
     }
 }

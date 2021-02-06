@@ -41,7 +41,7 @@ namespace T4.BusinessLogicLayer
             }
             catch (Exception e)
             {
-                Log.Error($"Unknown error in FileHandler.ParseFile: {e}");
+                Log.Error($"Error while parsing {new FileInfo(path).Name} ({path}): {e}");
             }
 
             return null;
@@ -49,6 +49,7 @@ namespace T4.BusinessLogicLayer
 
         public void OnDirectoryContentChanged(object sender, FileSystemEventArgs eventArgs)
         {
+            Log.Information("Directory content changed. Processing...");
             Task.Factory.StartNew(() =>
             {
                 try
@@ -59,23 +60,34 @@ namespace T4.BusinessLogicLayer
 
                     FileInfo fileInfo = new FileInfo(path);
 
+                    bool printed = false;
                     while (IsFileBusy(fileInfo))
                     {
-                        // nice weather huh
+                        if (!printed)
+                        {
+                            Log.Information($"{fileName} is busy. Waiting...");
+                            printed = true;
+                        }
+                        // nice weather
+                    }
+
+                    if (printed)
+                    {
+                        Log.Information($"{fileName} is not busy anymore. Continuing...");
                     }
 
                     // csv sales
                     IEnumerable<LocalSale> localSales = ParseFile(path);
                     // db sales
                     ICollection<Sale> dbSales = new List<Sale>();
+                    Manager manager = new Manager(managerLastName);
                     foreach (var localSale in localSales)
                     {
-                        Sale sale = MakeDbSale(localSale, managerLastName);
+                        Sale sale = MakeDbSale(localSale, manager);
                         dbSales.Add(sale);
                     }
 
                     // pass sales and manager to database manager
-                    Manager manager = new Manager(managerLastName);
                     OnSalesReadyEvent?.Invoke(dbSales, manager);
                 }
                 catch (Exception e)
@@ -85,12 +97,15 @@ namespace T4.BusinessLogicLayer
             });
         }
 
-        public Sale MakeDbSale(LocalSale localSale, string managerLastName)
+        public Sale MakeDbSale(LocalSale localSale, Manager manager)
         {
-            Sale sale = new Sale();
-            sale.DateTime = localSale.DateTime;
-            sale.Client = new Client(localSale.ClientFirstName, localSale.ClientLastName);
-            sale.Manager = new Manager(managerLastName);
+            Sale sale = new Sale
+            {
+                DateTime = DateTime.ParseExact(localSale.DateTime, "dd.MM.yyyy", CultureInfo.InvariantCulture),
+                Client = new Client(localSale.ClientFirstName, localSale.ClientLastName),
+                Manager = manager,
+                Product = new Product(localSale.ProductName, localSale.ProductPrice)
+            };
             return sale;
         }
 

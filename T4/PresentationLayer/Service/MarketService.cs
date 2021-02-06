@@ -21,34 +21,6 @@ namespace T4.PresentationLayer.Service
         {
             Log.Information("Starting service...");
             
-            
-            /*base.OnStart(args);
-
-            if (_worker != null && _worker.IsBusy)
-            {
-                EventLog.WriteEntry("Service: Worker already running.", EventLogEntryType.Warning);
-                return;
-            }
-
-            _worker = new BackgroundWorker();
-            _worker.DoWork += (sender, eventArgs) =>
-            {
-                EventLog.WriteEntry("Worker do work entered", EventLogEntryType.Information);
-
-                var i = 0;
-                while (!_worker.CancellationPending)
-                {
-                    EventLog.WriteEntry("Worker working " + i++, EventLogEntryType.Information);
-                    Thread.Sleep(3000);
-                }
-
-                EventLog.WriteEntry("Worker exit.", EventLogEntryType.Information);
-            };
-
-            _worker.WorkerSupportsCancellation = true;
-            _worker.WorkerReportsProgress = false;
-            _worker.RunWorkerAsync();
-            EventLog.WriteEntry("Service: Worker started", EventLogEntryType.Information);*/
 
         }
 
