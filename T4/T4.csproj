@@ -99,19 +99,21 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="BusinessLogicLayer\Worker.cs" />
-        <Compile Include="BusinessLogicLayer\DatabaseManager.cs" />
         <Compile Include="BusinessLogicLayer\FileHandler.cs" />
         <Compile Include="BusinessLogicLayer\FileWatcher.cs" />
         <Compile Include="DataAccessLayer\DatabaseContext.cs" />
+        <Compile Include="DataAccessLayer\DatabaseManager.cs" />
         <Compile Include="DataLayer\Models\Client.cs" />
         <Compile Include="DataLayer\Models\CSV\LocalSale.cs" />
         <Compile Include="DataLayer\Models\Manager.cs" />
         <Compile Include="DataLayer\Models\Product.cs" />
         <Compile Include="DataLayer\Models\Sale.cs" />
         <Compile Include="PresentationLayer\ConsoleClient.cs" />
-        <Compile Include="PresentationLayer\Service\MarketService.cs" />
         <Compile Include="PresentationLayer\Service\ServiceClient.cs" />
-        <Compile Include="PresentationLayer\Service\MarketProcessInstaller.cs" />
+        <Compile Include="PresentationLayer\Service\MarketServiceProcessInstaller.cs" />
+        <Compile Include="PresentationLayer\Service\MarketServiceProcessInstaller.Designer.cs" />
+        <Compile Include="PresentationLayer\Service\MarketService.cs" />
+        <Compile Include="PresentationLayer\Service\MarketService.Designer.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

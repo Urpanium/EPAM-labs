@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace T4.DataLayer.Models
+﻿namespace T4.DataLayer.Models
 {
     public class Product
     {

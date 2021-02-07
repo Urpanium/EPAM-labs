@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Serilog;
-using T4.DataAccessLayer;
 using T4.DataLayer.Models;
 
-namespace T4.BusinessLogicLayer
+namespace T4.DataAccessLayer
 {
     public class DatabaseManager : IDisposable
     {
@@ -61,7 +60,7 @@ namespace T4.BusinessLogicLayer
             }
             catch (Exception e)
             {
-                Log.Error($"Error while transferring data to database: {e}");
+                Log.Error($"Error while transferring data ({manager.LastName}) to database: {e}");
             }
             finally
             {

@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
 using System.IO;
 using Serilog;
-using T4.PresentationLayer;
 using T4.PresentationLayer.Service;
 
 namespace T4
@@ -10,20 +9,19 @@ namespace T4
     {
         public static void Main(string[] args)
         {
-            string directoryName = ConfigurationManager.AppSettings["directoryName"];
+            string directoryPath = ConfigurationManager.AppSettings["directoryPath"];
             string logFileName = ConfigurationManager.AppSettings["logFileName"];
 
-            string directoryPath = Directory.GetCurrentDirectory() + "\\" + directoryName;
-            string logPath = Directory.GetCurrentDirectory() + "\\" + logFileName;
+            string logPath = directoryPath + "\\" + logFileName;
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.File(logPath)
                 .WriteTo.Console()
                 .CreateLogger();
             Log.Information("Creating client");
-            ConsoleClient client = new ConsoleClient(directoryPath);
-            //ServiceClient client = new ServiceClient();
-            
+            //ConsoleClient client = new ConsoleClient(directoryPath);
+            ServiceClient client = new ServiceClient(directoryPath);
+
             /*using (DatabaseContext db = new DatabaseContext())
             {
                 Manager manager = new Manager {LastName = "ururu"};

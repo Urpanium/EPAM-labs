@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace T4.DataLayer.Models
+﻿namespace T4.DataLayer.Models
 {
     public class Manager
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace T4.DataLayer.Models.CSV
+﻿namespace T4.DataLayer.Models.CSV
 {
     // local sale structure stored in CVS's
     public class LocalSale

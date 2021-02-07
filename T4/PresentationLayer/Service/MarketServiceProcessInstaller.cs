@@ -5,7 +5,7 @@ using System.ServiceProcess;
 namespace T4.PresentationLayer.Service
 {
     [RunInstaller(true)]
-    public class MarketServiceProcessInstaller : Installer
+    public partial class MarketServiceProcessInstaller : Installer
     {
 
         public MarketServiceProcessInstaller()
@@ -19,9 +19,9 @@ namespace T4.PresentationLayer.Service
 
             var serviceInstaller = new ServiceInstaller
             {
-                DisplayName = "Market Service",
+                DisplayName = "MarketService",
                 ServiceName = "MarketService",
-                StartType = ServiceStartMode.Automatic
+                StartType = ServiceStartMode.Manual
             };
 
             Installers.Add(serviceProcessInstaller);
