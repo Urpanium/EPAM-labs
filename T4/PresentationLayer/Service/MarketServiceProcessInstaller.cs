@@ -12,9 +12,7 @@ namespace T4.PresentationLayer.Service
         {
             var serviceProcessInstaller = new ServiceProcessInstaller
             {
-                Account = ServiceAccount.LocalSystem,
-                Password = null,
-                Username = null
+                Account = ServiceAccount.LocalSystem
             };
 
             var serviceInstaller = new ServiceInstaller

@@ -11,6 +11,10 @@ namespace T4.DataLayer.Models
         public Product Product { get; set; }
         
         public DateTime DateTime { get; set; }
-        
+
+        public override string ToString()
+        {
+            return $"{Id}, Client {Client?.Id}, Manager {Manager?.Id}, {DateTime.Date}";
+        }
     }
 }

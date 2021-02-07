@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.ServiceProcess;
 using System.Threading;
 using Serilog;
@@ -31,6 +32,7 @@ namespace T4.PresentationLayer.Service
                 FileHandler fileHandler = new FileHandler();
                 FileWatcher fileWatcher = new FileWatcher(_directoryPath, fileHandler);
                 DatabaseManager databaseManager = new DatabaseManager();
+                
                 _worker = new Worker(databaseManager, fileHandler, fileWatcher);
                 _worker.Start();
                 Log.Information("Started");
@@ -43,7 +45,6 @@ namespace T4.PresentationLayer.Service
 
         protected override void OnStop()
         {
-
             try
             {
                 _worker.Stop();
@@ -55,17 +56,6 @@ namespace T4.PresentationLayer.Service
             {
                 Log.Error($"Error while stopping service: {e}");
             }
-
-            /*base.OnStop();
-
-            if (!_worker.IsBusy) return;
-
-            EventLog.WriteEntry("Service: Worker cancelling ...", EventLogEntryType.Information);
-            _worker.CancelAsync();
-            Thread.Sleep(3000);
-
-            EventLog.WriteEntry("Service: Worker dismissed ...", EventLogEntryType.Information);
-            _worker = null;*/
         }
     }
 }

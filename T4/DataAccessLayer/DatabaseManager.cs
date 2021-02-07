@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Serilog;
 using T4.DataLayer.Models;
@@ -28,6 +29,12 @@ namespace T4.DataAccessLayer
                 //check if manager already exists in database
                 Manager managerFromDatabase =
                     _context.Managers.SingleOrDefault(m => m.LastName.Equals(manager.LastName));
+                /*StringBuilder sb = new StringBuilder();
+                foreach (var sale in _context.Sales)
+                {
+                    sb.Append(sale + "\n");
+                }
+                Log.Information($"Ghost sales: {sb}");*/
                 Log.Information($"Manager existence: {managerFromDatabase != null}");
                 List<Sale> salesList = sales.ToList();
                 if (managerFromDatabase == null)
@@ -42,16 +49,16 @@ namespace T4.DataAccessLayer
                     }
                 }
 
-                /*for (int i = 0; i < salesList.Count; i++)
+                /*
+                sb = new StringBuilder();
+                foreach (var sale in salesList)
                 {
-                    Sale sale = salesList[i];
-                    Client client = _context.Clients.SingleOrDefault(
-                        c => c == sale.Client);
-                    if (client != null)
-                    {
-                        sale.Client = client;
-                    }
-                }*/
+                    sb.Append(sale + "\n");
+                }
+                Log.Information($"Ghost sales check: {sb}");*/
+                Log.Information($"Manager existence: {managerFromDatabase != null}");
+                Log.Information($"Connection String: {_context.Database.Connection.ConnectionString}");
+                Log.Information($"Data Source: {_context.Database.Connection.DataSource}");
 
                 _context.Sales.AddRange(salesList);
 

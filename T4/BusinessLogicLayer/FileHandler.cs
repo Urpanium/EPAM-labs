@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
 using Serilog;
@@ -30,7 +31,12 @@ namespace T4.BusinessLogicLayer
                         {
                             Log.Error($"No records where read from file {path}");
                         }
-
+                        /*StringBuilder sb = new StringBuilder();
+                        foreach (var sale in sales)
+                        {
+                            sb.Append(sale + "\n");
+                        }
+                        Log.Information($"Ghost local sales: {sb}");*/
                         return sales;
                     }
                 }

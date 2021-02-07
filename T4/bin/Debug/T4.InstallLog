@@ -143,3 +143,148 @@ System.Security.SecurityException: Источник не найден, но не
    logtoconsole = 
    assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
    logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление источника EventLog MarketService.
+Выполняется удаление службы MarketService из системы...
+Служба MarketService успешно удалена из системы.
+Попытка останова службы MarketService.
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Служба MarketService успешно установлена.
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление источника EventLog MarketService.
+Выполняется удаление службы MarketService из системы...
+Служба MarketService успешно удалена из системы.
+Попытка останова службы MarketService.
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Служба MarketService успешно установлена.
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление источника EventLog MarketService.
+Выполняется удаление службы MarketService из системы...
+Служба MarketService успешно удалена из системы.
+Попытка останова службы MarketService.
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Служба MarketService успешно установлена.
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление источника EventLog MarketService.
+Выполняется удаление службы MarketService из системы...
+Служба MarketService успешно удалена из системы.
+Попытка останова службы MarketService.
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Служба MarketService успешно установлена.
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление источника EventLog MarketService.
+Выполняется удаление службы MarketService из системы...
+Служба MarketService успешно удалена из системы.
+Попытка останова службы MarketService.
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Служба MarketService успешно установлена.
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется откат для сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Восстанавливается исходное состояние журнала событий для источника MarketService.
+Выполняется удаление сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Выполняется удаление источника EventLog MarketService.
+Выполняется удаление службы MarketService из системы...
+Служба MarketService успешно удалена из системы.
+Попытка останова службы MarketService.
+Выполняется установка сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog
+Устанавливается служба MarketService...
+Служба MarketService успешно установлена.
+Создается исходный EventLog MarketService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   assemblypath = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.exe
+   logfile = C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\T4.InstallLog

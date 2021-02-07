@@ -11,5 +11,10 @@
 
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
+        
+        public override string ToString()
+        {
+            return $"{Id}, Client {ClientFirstName} {ClientLastName}, {DateTime}, Product {ProductName} {ProductPrice}";
+        }
     }
 }

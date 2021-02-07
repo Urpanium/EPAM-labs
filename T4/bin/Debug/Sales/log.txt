@@ -1,12 +1,274 @@
-2021-02-07 20:10:41.304 +03:00 [INF] Creating client
-2021-02-07 20:10:41.323 +03:00 [INF] Starting service...
-2021-02-07 20:10:41.424 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
-2021-02-07 20:10:41.424 +03:00 [INF] Started
-2021-02-07 20:10:44.301 +03:00 [INF] Directory content changed. Processing...
-2021-02-07 20:10:44.362 +03:00 [INF] Sales are ready. Pushing...
-2021-02-07 20:10:45.839 +03:00 [INF] Manager existence: False
-2021-02-07 20:10:46.028 +03:00 [INF] Successfully pushed file from Neivanov
-2021-02-07 20:12:19.330 +03:00 [INF] Directory content changed. Processing...
-2021-02-07 20:12:19.333 +03:00 [INF] Sales are ready. Pushing...
-2021-02-07 20:12:19.335 +03:00 [INF] Manager existence: True
-2021-02-07 20:12:19.362 +03:00 [INF] Successfully pushed file from Neivanov
+2021-02-07 23:50:45.039 +03:00 [INF] Creating client
+2021-02-07 23:50:45.086 +03:00 [INF] Starting service...
+2021-02-07 23:50:45.357 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
+2021-02-07 23:50:45.357 +03:00 [INF] Started
+2021-02-07 23:50:55.870 +03:00 [INF] Directory content changed. Processing...
+2021-02-07 23:50:55.945 +03:00 [INF] Ghost local sales: 100, Client Ursulina Rodmann, 20.06.1979, Product Chennai 943
+101, Client Modestia Phi, 24.12.1974, Product Washington 29
+102, Client Lizzie Center, 30.12.1913, Product Castries 971
+103, Client Oralee Iiette, 15.05.1950, Product Copenhagen 788
+104, Client Averyl Irmine, 19.11.1951, Product Recife 942
+105, Client Ardys Corabella, 29.05.1990, Product Seoul 214
+106, Client Janey Cutlerr, 27.11.1959, Product Maceió 336
+107, Client Eolanda Cookie, 03.10.1993, Product Kigali 281
+108, Client Dominga Karna, 19.07.2011, Product Sofia 779
+109, Client Ardeen Gaulin, 07.05.1983, Product Whitehorse 357
+110, Client Katuscha Loeb, 02.04.1997, Product Basse-Terre 472
+111, Client Rosene Kravits, 21.04.1991, Product Port of Spain 860
+112, Client Constance Audly, 10.05.1979, Product Philadelphia 166
+113, Client Frank Havens, 07.10.1947, Product Saint-Denis 975
+114, Client Monika Kesley, 19.05.1926, Product Virginia Beach 156
+115, Client Roslyn Ellerey, 31.10.1904, Product Nagoya 629
+116, Client Gilda Drus, 10.10.1909, Product Asmara 222
+117, Client Amalie Krystle, 11.05.2004, Product Valencia 201
+118, Client Lynde Jena, 26.12.1995, Product Roseau 659
+119, Client Regina Mehalek, 15.04.1948, Product Bangalore 627
+
+2021-02-07 23:50:55.957 +03:00 [INF] Sales are ready. Pushing...
+2021-02-07 23:51:00.624 +03:00 [INF] Ghost sales: 1, Client , Manager , 24.02.1982 00:00:00
+2, Client , Manager , 01.03.1983 00:00:00
+3, Client , Manager , 14.12.2019 00:00:00
+4, Client , Manager , 27.12.1979 00:00:00
+5, Client , Manager , 10.02.1912 00:00:00
+6, Client , Manager , 17.11.1963 00:00:00
+7, Client , Manager , 03.01.1929 00:00:00
+8, Client , Manager , 17.01.1932 00:00:00
+9, Client , Manager , 14.10.1924 00:00:00
+10, Client , Manager , 30.01.1940 00:00:00
+11, Client , Manager , 16.07.1929 00:00:00
+12, Client , Manager , 01.03.2018 00:00:00
+13, Client , Manager , 26.09.1919 00:00:00
+14, Client , Manager , 24.11.1947 00:00:00
+15, Client , Manager , 23.07.1943 00:00:00
+16, Client , Manager , 01.08.1916 00:00:00
+17, Client , Manager , 15.06.1903 00:00:00
+18, Client , Manager , 17.01.1906 00:00:00
+19, Client , Manager , 09.01.1978 00:00:00
+20, Client , Manager , 12.05.1987 00:00:00
+21, Client , Manager , 24.02.1982 00:00:00
+22, Client , Manager , 01.03.1983 00:00:00
+23, Client , Manager , 14.12.2019 00:00:00
+24, Client , Manager , 27.12.1979 00:00:00
+25, Client , Manager , 10.02.1912 00:00:00
+26, Client , Manager , 17.11.1963 00:00:00
+27, Client , Manager , 03.01.1929 00:00:00
+28, Client , Manager , 17.01.1932 00:00:00
+29, Client , Manager , 14.10.1924 00:00:00
+30, Client , Manager , 30.01.1940 00:00:00
+31, Client , Manager , 16.07.1929 00:00:00
+32, Client , Manager , 01.03.2018 00:00:00
+33, Client , Manager , 26.09.1919 00:00:00
+34, Client , Manager , 24.11.1947 00:00:00
+35, Client , Manager , 23.07.1943 00:00:00
+36, Client , Manager , 01.08.1916 00:00:00
+37, Client , Manager , 15.06.1903 00:00:00
+38, Client , Manager , 17.01.1906 00:00:00
+39, Client , Manager , 09.01.1978 00:00:00
+40, Client , Manager , 12.05.1987 00:00:00
+41, Client , Manager , 24.02.1982 00:00:00
+42, Client , Manager , 01.03.1983 00:00:00
+43, Client , Manager , 14.12.2019 00:00:00
+44, Client , Manager , 27.12.1979 00:00:00
+45, Client , Manager , 10.02.1912 00:00:00
+46, Client , Manager , 17.11.1963 00:00:00
+47, Client , Manager , 03.01.1929 00:00:00
+48, Client , Manager , 17.01.1932 00:00:00
+49, Client , Manager , 14.10.1924 00:00:00
+50, Client , Manager , 30.01.1940 00:00:00
+51, Client , Manager , 16.07.1929 00:00:00
+52, Client , Manager , 01.03.2018 00:00:00
+53, Client , Manager , 26.09.1919 00:00:00
+54, Client , Manager , 24.11.1947 00:00:00
+55, Client , Manager , 23.07.1943 00:00:00
+56, Client , Manager , 01.08.1916 00:00:00
+57, Client , Manager , 15.06.1903 00:00:00
+58, Client , Manager , 17.01.1906 00:00:00
+59, Client , Manager , 09.01.1978 00:00:00
+60, Client , Manager , 12.05.1987 00:00:00
+61, Client , Manager , 24.02.1982 00:00:00
+62, Client , Manager , 01.03.1983 00:00:00
+63, Client , Manager , 14.12.2019 00:00:00
+64, Client , Manager , 27.12.1979 00:00:00
+65, Client , Manager , 10.02.1912 00:00:00
+66, Client , Manager , 17.11.1963 00:00:00
+67, Client , Manager , 03.01.1929 00:00:00
+68, Client , Manager , 17.01.1932 00:00:00
+69, Client , Manager , 14.10.1924 00:00:00
+70, Client , Manager , 30.01.1940 00:00:00
+71, Client , Manager , 16.07.1929 00:00:00
+72, Client , Manager , 01.03.2018 00:00:00
+73, Client , Manager , 26.09.1919 00:00:00
+74, Client , Manager , 24.11.1947 00:00:00
+75, Client , Manager , 23.07.1943 00:00:00
+76, Client , Manager , 01.08.1916 00:00:00
+77, Client , Manager , 15.06.1903 00:00:00
+78, Client , Manager , 17.01.1906 00:00:00
+79, Client , Manager , 09.01.1978 00:00:00
+80, Client , Manager , 12.05.1987 00:00:00
+81, Client , Manager , 24.02.1982 00:00:00
+82, Client , Manager , 01.03.1983 00:00:00
+83, Client , Manager , 14.12.2019 00:00:00
+84, Client , Manager , 27.12.1979 00:00:00
+85, Client , Manager , 10.02.1912 00:00:00
+86, Client , Manager , 17.11.1963 00:00:00
+87, Client , Manager , 03.01.1929 00:00:00
+88, Client , Manager , 17.01.1932 00:00:00
+89, Client , Manager , 14.10.1924 00:00:00
+90, Client , Manager , 30.01.1940 00:00:00
+91, Client , Manager , 16.07.1929 00:00:00
+92, Client , Manager , 01.03.2018 00:00:00
+93, Client , Manager , 26.09.1919 00:00:00
+94, Client , Manager , 24.11.1947 00:00:00
+95, Client , Manager , 23.07.1943 00:00:00
+96, Client , Manager , 01.08.1916 00:00:00
+97, Client , Manager , 15.06.1903 00:00:00
+98, Client , Manager , 17.01.1906 00:00:00
+99, Client , Manager , 09.01.1978 00:00:00
+100, Client , Manager , 12.05.1987 00:00:00
+101, Client , Manager , 24.02.1982 00:00:00
+102, Client , Manager , 01.03.1983 00:00:00
+103, Client , Manager , 14.12.2019 00:00:00
+104, Client , Manager , 27.12.1979 00:00:00
+105, Client , Manager , 10.02.1912 00:00:00
+106, Client , Manager , 17.11.1963 00:00:00
+107, Client , Manager , 03.01.1929 00:00:00
+108, Client , Manager , 17.01.1932 00:00:00
+109, Client , Manager , 14.10.1924 00:00:00
+110, Client , Manager , 30.01.1940 00:00:00
+111, Client , Manager , 16.07.1929 00:00:00
+112, Client , Manager , 01.03.2018 00:00:00
+113, Client , Manager , 26.09.1919 00:00:00
+114, Client , Manager , 24.11.1947 00:00:00
+115, Client , Manager , 23.07.1943 00:00:00
+116, Client , Manager , 01.08.1916 00:00:00
+117, Client , Manager , 15.06.1903 00:00:00
+118, Client , Manager , 17.01.1906 00:00:00
+119, Client , Manager , 09.01.1978 00:00:00
+120, Client , Manager , 12.05.1987 00:00:00
+121, Client , Manager , 24.02.1982 00:00:00
+122, Client , Manager , 01.03.1983 00:00:00
+123, Client , Manager , 14.12.2019 00:00:00
+124, Client , Manager , 27.12.1979 00:00:00
+125, Client , Manager , 10.02.1912 00:00:00
+126, Client , Manager , 17.11.1963 00:00:00
+127, Client , Manager , 03.01.1929 00:00:00
+128, Client , Manager , 17.01.1932 00:00:00
+129, Client , Manager , 14.10.1924 00:00:00
+130, Client , Manager , 30.01.1940 00:00:00
+131, Client , Manager , 16.07.1929 00:00:00
+132, Client , Manager , 01.03.2018 00:00:00
+133, Client , Manager , 26.09.1919 00:00:00
+134, Client , Manager , 24.11.1947 00:00:00
+135, Client , Manager , 23.07.1943 00:00:00
+136, Client , Manager , 01.08.1916 00:00:00
+137, Client , Manager , 15.06.1903 00:00:00
+138, Client , Manager , 17.01.1906 00:00:00
+139, Client , Manager , 09.01.1978 00:00:00
+140, Client , Manager , 12.05.1987 00:00:00
+141, Client , Manager , 24.02.1982 00:00:00
+142, Client , Manager , 01.03.1983 00:00:00
+143, Client , Manager , 14.12.2019 00:00:00
+144, Client , Manager , 27.12.1979 00:00:00
+145, Client , Manager , 10.02.1912 00:00:00
+146, Client , Manager , 17.11.1963 00:00:00
+147, Client , Manager , 03.01.1929 00:00:00
+148, Client , Manager , 17.01.1932 00:00:00
+149, Client , Manager , 14.10.1924 00:00:00
+150, Client , Manager , 30.01.1940 00:00:00
+151, Client , Manager , 16.07.1929 00:00:00
+152, Client , Manager , 01.03.2018 00:00:00
+153, Client , Manager , 26.09.1919 00:00:00
+154, Client , Manager , 24.11.1947 00:00:00
+155, Client , Manager , 23.07.1943 00:00:00
+156, Client , Manager , 01.08.1916 00:00:00
+157, Client , Manager , 15.06.1903 00:00:00
+158, Client , Manager , 17.01.1906 00:00:00
+159, Client , Manager , 09.01.1978 00:00:00
+160, Client , Manager , 12.05.1987 00:00:00
+161, Client , Manager , 24.02.1982 00:00:00
+162, Client , Manager , 01.03.1983 00:00:00
+163, Client , Manager , 14.12.2019 00:00:00
+164, Client , Manager , 27.12.1979 00:00:00
+165, Client , Manager , 10.02.1912 00:00:00
+166, Client , Manager , 17.11.1963 00:00:00
+167, Client , Manager , 03.01.1929 00:00:00
+168, Client , Manager , 17.01.1932 00:00:00
+169, Client , Manager , 14.10.1924 00:00:00
+170, Client , Manager , 30.01.1940 00:00:00
+171, Client , Manager , 16.07.1929 00:00:00
+172, Client , Manager , 01.03.2018 00:00:00
+173, Client , Manager , 26.09.1919 00:00:00
+174, Client , Manager , 24.11.1947 00:00:00
+175, Client , Manager , 23.07.1943 00:00:00
+176, Client , Manager , 01.08.1916 00:00:00
+177, Client , Manager , 15.06.1903 00:00:00
+178, Client , Manager , 17.01.1906 00:00:00
+179, Client , Manager , 09.01.1978 00:00:00
+180, Client , Manager , 12.05.1987 00:00:00
+181, Client , Manager , 24.02.1982 00:00:00
+182, Client , Manager , 01.03.1983 00:00:00
+183, Client , Manager , 14.12.2019 00:00:00
+184, Client , Manager , 27.12.1979 00:00:00
+185, Client , Manager , 10.02.1912 00:00:00
+186, Client , Manager , 17.11.1963 00:00:00
+187, Client , Manager , 03.01.1929 00:00:00
+188, Client , Manager , 17.01.1932 00:00:00
+189, Client , Manager , 14.10.1924 00:00:00
+190, Client , Manager , 30.01.1940 00:00:00
+191, Client , Manager , 16.07.1929 00:00:00
+192, Client , Manager , 01.03.2018 00:00:00
+193, Client , Manager , 26.09.1919 00:00:00
+194, Client , Manager , 24.11.1947 00:00:00
+195, Client , Manager , 23.07.1943 00:00:00
+196, Client , Manager , 01.08.1916 00:00:00
+197, Client , Manager , 15.06.1903 00:00:00
+198, Client , Manager , 17.01.1906 00:00:00
+199, Client , Manager , 09.01.1978 00:00:00
+200, Client , Manager , 12.05.1987 00:00:00
+201, Client , Manager , 24.02.1982 00:00:00
+202, Client , Manager , 01.03.1983 00:00:00
+203, Client , Manager , 14.12.2019 00:00:00
+204, Client , Manager , 27.12.1979 00:00:00
+205, Client , Manager , 10.02.1912 00:00:00
+206, Client , Manager , 17.11.1963 00:00:00
+207, Client , Manager , 03.01.1929 00:00:00
+208, Client , Manager , 17.01.1932 00:00:00
+209, Client , Manager , 14.10.1924 00:00:00
+210, Client , Manager , 30.01.1940 00:00:00
+211, Client , Manager , 16.07.1929 00:00:00
+212, Client , Manager , 01.03.2018 00:00:00
+213, Client , Manager , 26.09.1919 00:00:00
+214, Client , Manager , 24.11.1947 00:00:00
+215, Client , Manager , 23.07.1943 00:00:00
+216, Client , Manager , 01.08.1916 00:00:00
+217, Client , Manager , 15.06.1903 00:00:00
+218, Client , Manager , 17.01.1906 00:00:00
+219, Client , Manager , 09.01.1978 00:00:00
+220, Client , Manager , 12.05.1987 00:00:00
+
+2021-02-07 23:51:00.625 +03:00 [INF] Manager existence: False
+2021-02-07 23:51:00.688 +03:00 [INF] Ghost sales check: 0, Client 0, Manager 0, 20.06.1979 00:00:00
+0, Client 0, Manager 0, 24.12.1974 00:00:00
+0, Client 0, Manager 0, 30.12.1913 00:00:00
+0, Client 0, Manager 0, 15.05.1950 00:00:00
+0, Client 0, Manager 0, 19.11.1951 00:00:00
+0, Client 0, Manager 0, 29.05.1990 00:00:00
+0, Client 0, Manager 0, 27.11.1959 00:00:00
+0, Client 0, Manager 0, 03.10.1993 00:00:00
+0, Client 0, Manager 0, 19.07.2011 00:00:00
+0, Client 0, Manager 0, 07.05.1983 00:00:00
+0, Client 0, Manager 0, 02.04.1997 00:00:00
+0, Client 0, Manager 0, 21.04.1991 00:00:00
+0, Client 0, Manager 0, 10.05.1979 00:00:00
+0, Client 0, Manager 0, 07.10.1947 00:00:00
+0, Client 0, Manager 0, 19.05.1926 00:00:00
+0, Client 0, Manager 0, 31.10.1904 00:00:00
+0, Client 0, Manager 0, 10.10.1909 00:00:00
+0, Client 0, Manager 0, 11.05.2004 00:00:00
+0, Client 0, Manager 0, 26.12.1995 00:00:00
+0, Client 0, Manager 0, 15.04.1948 00:00:00
+
+2021-02-07 23:51:00.688 +03:00 [INF] Manager existence: False
+2021-02-07 23:51:00.688 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market;Integrated Security=True;
+2021-02-07 23:51:00.688 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-07 23:51:01.081 +03:00 [INF] Successfully pushed file from Ivanov
