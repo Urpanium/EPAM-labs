@@ -1,7 +1,5 @@
 ﻿using System.Configuration;
-using System.IO;
 using Serilog;
-using T4.PresentationLayer;
 using T4.PresentationLayer.Service;
 
 namespace T4
@@ -22,21 +20,6 @@ namespace T4
             Log.Information("Creating client");
             //ConsoleClient client = new ConsoleClient(directoryPath);
             ServiceClient client = new ServiceClient(directoryPath);
-
-            /*using (DatabaseContext db = new DatabaseContext())
-            {
-                Manager manager = new Manager {LastName = "ururu"};
-                db.Managers.Add(manager);
-                Sale sale = new Sale {DateTime = DateTime.Today};   
-                db.Sales.Add(sale);
-                Client client = new Client();
-                db.Clients.Add(client);
-
-                db.Products.Add(new Product());
-
-
-                db.SaveChanges();
-            }*/
         }
     }
 }

@@ -6,18 +6,15 @@ namespace T4.BusinessLogicLayer
     public class Worker: IDisposable
     {
 
-        private DatabaseManager _databaseManager;
-        private FileHandler _fileHandler;
-        private FileWatcher _fileWatcher;
+        private readonly DatabaseManager _databaseManager;
+        private readonly FileWatcher _fileWatcher;
 
         public Worker(DatabaseManager databaseManager, FileHandler fileHandler, FileWatcher fileWatcher)
         {
-
             _databaseManager = databaseManager;
-            _fileHandler = fileHandler;
             _fileWatcher = fileWatcher;
 
-            _fileHandler.OnSalesReadyEvent += _databaseManager.OnSalesReady;
+            fileHandler.OnSalesReadyEvent += _databaseManager.OnSalesReady;
             
         }
 

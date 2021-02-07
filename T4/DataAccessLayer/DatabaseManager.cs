@@ -10,8 +10,8 @@ namespace T4.DataAccessLayer
 {
     public class DatabaseManager : IDisposable
     {
-        private static object _locker = new object();
-        private DatabaseContext _context;
+        private static readonly object Locker = new object();
+        private readonly DatabaseContext _context;
 
         public DatabaseManager()
         {
@@ -24,7 +24,7 @@ namespace T4.DataAccessLayer
             bool locked = false;
             try
             {
-                Monitor.Enter(_locker, ref locked);
+                Monitor.Enter(Locker, ref locked);
 
                 //check if manager already exists in database
                 Manager managerFromDatabase =
@@ -73,7 +73,7 @@ namespace T4.DataAccessLayer
             {
                 if (locked)
                 {
-                    Monitor.Exit(_locker);
+                    Monitor.Exit(Locker);
                 }
             }
         }

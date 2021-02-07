@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
 using Serilog;
@@ -18,7 +17,7 @@ namespace T4.BusinessLogicLayer
 
         public event FileSaleHandler OnSalesReadyEvent;
 
-        public IEnumerable<LocalSale> ParseFile(string path)
+        private IEnumerable<LocalSale> ParseFile(string path)
         {
             try
             {
@@ -103,7 +102,7 @@ namespace T4.BusinessLogicLayer
             });
         }
 
-        public Sale MakeDbSale(LocalSale localSale, Manager manager)
+        private static Sale MakeDbSale(LocalSale localSale, Manager manager)
         {
             Sale sale = new Sale
             {
@@ -115,7 +114,7 @@ namespace T4.BusinessLogicLayer
             return sale;
         }
 
-        private bool IsFileBusy(FileInfo file)
+        private static bool IsFileBusy(FileInfo file)
         {
             try
             {
@@ -132,20 +131,10 @@ namespace T4.BusinessLogicLayer
             return false;
         }
 
-
-        private string GetFileName(string path)
-        {
-            return Path.GetFileName(path);
-        }
-
-        private string GetManagerLastNameFromFileName(string fileName)
+        private static string GetManagerLastNameFromFileName(string fileName)
         {
             return fileName.Split('_')[0];
         }
 
-        private DateTime GetDateTimeFromFileName(string fileName) //why?
-        {
-            return DateTime.ParseExact(fileName.Split('_')[1], "ddMMyyyy", CultureInfo.InvariantCulture);
-        }
     }
 }
