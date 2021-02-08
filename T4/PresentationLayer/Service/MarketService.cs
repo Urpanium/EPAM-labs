@@ -47,7 +47,7 @@ namespace T4.PresentationLayer.Service
             try
             {
                 _worker.Stop();
-                _worker.Dispose();
+                _worker?.Dispose();
                 Thread.Sleep(3000);
                 Log.Information("Stopped service successfully");
             }

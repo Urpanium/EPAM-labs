@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T3", "T3\T3.csproj", "{2C8A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T4", "T4\T4.csproj", "{4DBF3FBF-7E83-461C-AABB-FFE4B6AD1E6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T5", "T5\T5.csproj", "{FA3DBB20-E7FE-4ACF-9AF2-233887A20242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{4DBF3FBF-7E83-461C-AABB-FFE4B6AD1E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DBF3FBF-7E83-461C-AABB-FFE4B6AD1E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DBF3FBF-7E83-461C-AABB-FFE4B6AD1E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA3DBB20-E7FE-4ACF-9AF2-233887A20242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA3DBB20-E7FE-4ACF-9AF2-233887A20242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA3DBB20-E7FE-4ACF-9AF2-233887A20242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA3DBB20-E7FE-4ACF-9AF2-233887A20242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

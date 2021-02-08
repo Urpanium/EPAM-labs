@@ -43,8 +43,8 @@ namespace T4.BusinessLogicLayer
             {
                 if (disposing)
                 {
-                    _fileWatcher.Dispose();
-                    _databaseManager.Dispose();
+                    _fileWatcher?.Dispose();
+                    _databaseManager?.Dispose();
                 }
             }
             _disposed = true;
