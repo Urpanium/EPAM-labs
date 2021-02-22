@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="market_web" uuid="3fad59aa-dd3c-4219-89ab-b67306fe168e">
+    <data-source source="LOCAL" name="market_web" uuid="059cdc54-eb35-4ba5-9cad-268d97c80f54">
       <driver-ref>sqlserver.jtds</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>

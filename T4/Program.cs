@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using Serilog;
+using T4.PresentationLayer;
 using T4.PresentationLayer.Service;
 
 namespace T4
@@ -18,8 +19,8 @@ namespace T4
                 .WriteTo.Console()
                 .CreateLogger();
             Log.Information("Creating client");
-            //ConsoleClient client = new ConsoleClient(directoryPath);
-            ServiceClient client = new ServiceClient(directoryPath);
+            ConsoleClient client = new ConsoleClient(directoryPath);
+            //ServiceClient client = new ServiceClient(directoryPath);
         }
     }
 }
