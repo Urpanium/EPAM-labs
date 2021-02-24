@@ -223,6 +223,7 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Statistics\ManagersChart.cshtml" />
+    <Content Include="Views\Statistics\SalesTable.cshtml" />
     <Content Include="Views\Statistics\SalesTableItem.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

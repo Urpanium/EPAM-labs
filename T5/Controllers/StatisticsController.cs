@@ -16,9 +16,10 @@ namespace T5.Controllers
         {
             //TODO: move to config
             int pageSize = 20;
-            IEnumerable<Sale> salesForPage= _context.Sales.Skip((page - 1) * pageSize).Take(pageSize);
-            PageInfo pageInfo = new PageInfo { PageNumber=page, PageSize=pageSize, ItemsCount=_context.Sales.ToList().Count};
-            PageIndexViewModel<Sale> ivm = new PageIndexViewModel<Sale> { PageInfo = pageInfo, Items = salesForPage };
+            IEnumerable<Sale> salesForPage = _context.Sales.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo
+                {PageNumber = page, PageSize = pageSize, ItemsCount = _context.Sales.ToList().Count};
+            PageIndexViewModel<Sale> ivm = new PageIndexViewModel<Sale> {PageInfo = pageInfo, Items = salesForPage};
             // make model
             SalesModel model = new SalesModel
             {
@@ -43,8 +44,34 @@ namespace T5.Controllers
                 Clients = _context.Clients,
                 Products = _context.Products
             };
-            
+
             return View(model);
+            //return Json(_context.Sales.ToArray(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult FilteredSales()
+        {
+            //TODO: get values from view
+            /*Manager manager;
+            DateTime fromDateTime;
+            DateTime toDateTime;*/
+            var sales = _context.Sales
+                .ToList()
+                .Select(
+                    s => new Sale
+                    {
+                        Id = s.Id,
+                        //TODO: check if it can be replace by Client = s.Client etc.
+                        Client = new Client
+                        {
+                            Id = s.Client.Id, FirstName = s.Client.FirstName, LastName = s.Client.LastName
+                        },
+                        Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
+                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
+                        DateTime = s.DateTime
+                    }
+                ).ToArray();
+            return Json(sales, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetChart()

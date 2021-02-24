@@ -4,12 +4,10 @@
 }
 
 <head>
-    @*TODO: create 2 scripts: for pagination and for diagram drawing*@
-    <script type="text/javascript">
-    // some JS ajax stuff web css style html yep yep im a web dev  
-    
-    </script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <title></title>
 </head>
+
 <h2>Sales diagram:</h2>
 
 <p>
@@ -21,8 +19,10 @@
 @*Statistics diagram here*@
 <img src="@Url.Action("GetChart")" alt="Chart"/>
 
+@Html.Partial("SalesTable", Model)
+
 @*Sales statistics based on*@
-<table class="table">
+@*<table id="salesTable" class="table">
     <tr>
         <th>Id</th>
         <th>DateTime</th>
@@ -46,4 +46,72 @@
             </td>
         </tr>
     }
-</table>
+</table>*@
+
+@*TODO: create 2 scripts: for pagination and for diagram drawing*@
+@*<script type="text/javascript">
+    // some JS ajax stuff web css style html yep yep im a web dev  
+    
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {  
+        alert("Works");
+            $("#salesTable").DataTable({
+                "ajax": {
+                    "url": "@Url.Action("GetFilteredSales", "Statistics")",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Id", name: "Id" },
+                    { "data": "DateTime", name: "DateTime" },
+                    { "data": "Client.FirstName", name: "Client.FirstName" },
+                    { "data": "Manager.LastName", name: "Manager.LastName" }
+                ]
+    }); 
+            });
+    </script>*@
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        GetEmployeeUsingAjax();
+            /*$(':button').click(function () {
+            
+            });*/
+        });
+    function cutDateTime(dateTime)
+    {
+        var sdt = dateTime.toString();
+        return sdt.substring(6, sdt.length - 1 - 2);
+    }
+    function GetEmployeeUsingAjax() {           
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("FilteredSales")',
+                data: { },
+                dataType: 'json',
+                success: function (data) {
+                    alert("WORKS! data:");
+                    var rows = '';
+                    $.each(data, function (i, item) {
+                        
+                        rows += "<tr>"
+                                  + "<td>" + item.Id + "</td>"
+                                  + "<td>" + cutDateTime(item.DateTime) + "</td>"
+                                  + "<td>" + item.Client.FirstName + " " + item.Client.LastName + "</td>"
+                                  + "<td>" + item.Manager.LastName + "</td>"
+                                  + "</tr>";
+                    });
+                    //alert("ROWS: " + rows);
+                    $('#salesTable tbody').append(rows);
+                 },
+                error: function (emp) {
+                    alert('error');
+                }
+            });
+        }    
+    </script>
+}

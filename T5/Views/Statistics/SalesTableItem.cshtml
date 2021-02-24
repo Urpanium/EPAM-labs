@@ -1,1 +1,8 @@
 ﻿@model T5.Stuff.Sale
+
+<tr>
+    <th>@Model.Id</th>
+    <th>@Model.DateTime</th>
+    <th>@Model.Client.FirstName @Model.Client.LastName</th>
+    <th>@Model.Manager.LastName</th>
+</tr>
