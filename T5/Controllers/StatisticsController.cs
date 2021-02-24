@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -68,7 +69,8 @@ namespace T5.Controllers
                         },
                         Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
                         Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
-                        DateTime = s.DateTime
+                        DateTime = s.DateTime,
+                        DateTimeString = s.DateTime.ToString(CultureInfo.InvariantCulture)
                     }
                 ).ToArray();
             return Json(sales, JsonRequestBehavior.AllowGet);
