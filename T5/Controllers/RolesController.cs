@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using T5.Models;
+using T5.Stuff;
 
 namespace T5.Controllers
 {

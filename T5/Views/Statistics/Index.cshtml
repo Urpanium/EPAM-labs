@@ -1,0 +1,49 @@
+﻿@model T5.Models.SalesModel
+@{
+    ViewBag.Title = "Sales";
+}
+
+<head>
+    @*TODO: create 2 scripts: for pagination and for diagram drawing*@
+    <script type="text/javascript">
+    // some JS ajax stuff web css style html yep yep im a web dev  
+    
+    </script>
+</head>
+<h2>Sales diagram:</h2>
+
+<p>
+    @Html.DropDownList("managersDropDownList", new SelectList(Model.Managers.Select(m => m.LastName)), "All managers")
+    <input type="datetime-local" value="@DateTime.MinValue" style="width: 100px;" textmode="Date" id="FromDate"/>
+    <input type="datetime-local" value="@DateTime.MaxValue" style="width: 100px;" textmode="Date" id="ToDate"/>
+</p>
+
+@*Statistics diagram here*@
+<img src="@Url.Action("GetChart")" alt="Chart"/>
+
+@*Sales statistics based on*@
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>DateTime</th>
+        <th>Client</th>
+        <th>Manager</th>
+    </tr>
+    @foreach (var item in Model.Sales)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.DateTime
+            </td>
+            <td>
+                @item.Client.FirstName @item.Client.LastName
+            </td>
+            <td>
+                @item.Manager.LastName
+            </td>
+        </tr>
+    }
+</table>

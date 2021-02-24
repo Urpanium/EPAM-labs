@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using T5.Models;
+using T5.Stuff;
 
 namespace T5
 {

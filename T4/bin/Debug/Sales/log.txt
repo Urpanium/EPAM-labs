@@ -37,3 +37,54 @@
 2021-02-23 00:20:09.661 +03:00 [INF] Starting...
 2021-02-23 00:20:09.811 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
 2021-02-23 00:20:09.812 +03:00 [INF] Started. Press any key to stop
+2021-02-23 09:36:21.800 +03:00 [INF] Creating client
+2021-02-23 09:36:21.841 +03:00 [INF] Starting...
+2021-02-23 09:36:21.989 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
+2021-02-23 09:36:21.990 +03:00 [INF] Started. Press any key to stop
+2021-02-23 09:39:41.615 +03:00 [INF] Directory content changed. Processing...
+2021-02-23 09:39:41.771 +03:00 [INF] Sales are ready. Pushing...
+2021-02-23 09:39:43.588 +03:00 [INF] Manager existence: True
+2021-02-23 09:39:43.600 +03:00 [INF] Manager existence: True
+2021-02-23 09:39:43.602 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-23 09:39:43.603 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-23 09:39:43.934 +03:00 [INF] Successfully pushed file from Ivanov
+2021-02-23 09:39:57.743 +03:00 [INF] Directory content changed. Processing...
+2021-02-23 09:39:57.765 +03:00 [INF] Sales are ready. Pushing...
+2021-02-23 09:39:57.787 +03:00 [INF] Manager existence: True
+2021-02-23 09:39:57.792 +03:00 [INF] Manager existence: True
+2021-02-23 09:39:57.798 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-23 09:39:57.803 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-23 09:39:57.876 +03:00 [INF] Successfully pushed file from Test2
+2021-02-23 09:57:40.281 +03:00 [INF] Creating client
+2021-02-23 09:57:40.310 +03:00 [INF] Starting...
+2021-02-23 09:57:40.479 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
+2021-02-23 09:57:40.480 +03:00 [INF] Started. Press any key to stop
+2021-02-24 09:03:39.305 +03:00 [INF] Creating client
+2021-02-24 09:03:39.329 +03:00 [INF] Starting...
+2021-02-24 09:03:39.460 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
+2021-02-24 09:03:39.461 +03:00 [INF] Started. Press any key to stop
+2021-02-24 09:03:53.280 +03:00 [INF] Directory content changed. Processing...
+2021-02-24 09:03:53.646 +03:00 [INF] Sales are ready. Pushing...
+2021-02-24 09:03:57.413 +03:00 [INF] Manager existence: False
+2021-02-24 09:03:57.494 +03:00 [INF] Manager existence: False
+2021-02-24 09:03:57.496 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-24 09:03:57.498 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-24 09:03:57.938 +03:00 [INF] Successfully pushed file from Pedro.csv
+2021-02-24 09:04:09.767 +03:00 [INF] Directory content changed. Processing...
+2021-02-24 09:04:09.789 +03:00 [INF] Sales are ready. Pushing...
+2021-02-24 09:04:09.805 +03:00 [INF] Manager existence: True
+2021-02-24 09:04:09.810 +03:00 [INF] Manager existence: True
+2021-02-24 09:04:09.814 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-24 09:04:09.821 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-24 09:04:09.903 +03:00 [INF] Successfully pushed file from Pedro.csv
+2021-02-24 09:04:12.752 +03:00 [INF] Directory content changed. Processing...
+2021-02-24 09:04:12.767 +03:00 [INF] Sales are ready. Pushing...
+2021-02-24 09:04:12.776 +03:00 [INF] Manager existence: True
+2021-02-24 09:04:12.784 +03:00 [INF] Manager existence: True
+2021-02-24 09:04:12.789 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-24 09:04:12.802 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-24 09:04:12.858 +03:00 [INF] Successfully pushed file from Pedro.csv
+2021-02-24 09:09:38.381 +03:00 [INF] Creating client
+2021-02-24 09:09:38.415 +03:00 [INF] Starting...
+2021-02-24 09:09:38.554 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
+2021-02-24 09:09:38.556 +03:00 [INF] Started. Press any key to stop

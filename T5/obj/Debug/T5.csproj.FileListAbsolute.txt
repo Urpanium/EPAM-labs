@@ -252,3 +252,5 @@ C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T5\obj\Debug\T5.csproj.CoreCompileInpu
 C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T5\obj\Debug\T5.csproj.CopyComplete
 C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T5\obj\Debug\T5.dll
 C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T5\obj\Debug\T5.pdb
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T5\bin\Serilog.dll
+C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T5\bin\Serilog.xml
