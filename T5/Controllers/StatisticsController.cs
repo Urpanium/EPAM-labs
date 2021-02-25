@@ -89,9 +89,33 @@ namespace T5.Controllers
 
         public ActionResult UpdateSalesTable(string jsonData)
         {
-            return PartialView("_SalesTable");
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            int page = serializer.Deserialize<int>(jsonData);
+            var sales = _context.Sales
+                //.Where(s => DateTime.Compare())
+                .OrderBy(s => s.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()
+                .Select(
+                    s => new Sale
+                    {
+                        Id = s.Id,
+                        //TODO: check if it can be replace by Client = s.Client etc.
+                        Client = new Client
+                        {
+                            Id = s.Client.Id, FirstName = s.Client.FirstName, LastName = s.Client.LastName
+                        },
+                        Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
+                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
+                        DateTime = s.DateTime,
+                        DateTimeString = s.DateTime.ToString(CultureInfo.InvariantCulture)
+                    }
+                ).ToArray();
+            return PartialView("_SalesTable", sales);
         }
 
+        //TODO: pass filter parameters in jsonData
         public JsonResult UpdateSales(string jsonData)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();

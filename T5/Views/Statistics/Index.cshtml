@@ -72,29 +72,15 @@
         var jsonData = JSON.stringify(pageNumber);
             $.ajax({
                 type: 'GET',
-                url: '@Url.Action("UpdateSales")',
+                url: '@Url.Action("UpdateSalesTable")',
                 data: {jsonData},
-                dataType: 'json',
+                dataType: 'html',
                 success: function (data) {
-                    var rows = '<table id="sales-table" class="table"><tr><th>Id</th><th>DateTime</th><th>Client</th><th>Manager</th></tr>';
-                    
-                    $.each(data, function (i, item) {
-                        rows += "<tr>"
-                                  + "<td>" + item.Id + "</td>"
-                                  + "<td>" + item.DateTimeString + "</td>"
-                                  + "<td>" + item.Client.FirstName + " " + item.Client.LastName + "</td>"
-                                  + "<td>" + item.Manager.LastName + "</td>"
-                                  + "</tr>";
-                    });
-                    rows += '</table';
-                    //alert($('#sales-table-container').innerHTML);
-                    $('#sales-table-container').html(rows);
+                    $('#sales-table-container').html(data);
                     updatePageInfo(pageNumber);
-                    //alert($('#sales-table-container').innerHTML);
-                    //$('#sales-table').append(rows);
                  },
-                error: function (emp) {
-                    alert('error');
+                error: function (jQXHR, textStatus, errorThrown){
+                    console.log('An error occurred while trying to contact the server for Sales: ' + jQXHR.status + ' ' + textStatus + ' ' + errorThrown);                
                 }
             });
         }    
