@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Helpers;
@@ -13,11 +12,14 @@ namespace T5.Controllers
     public class StatisticsController : Controller
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
-
+        private readonly int pageSize = 20;
         public ActionResult Index(int page = 1)
         {
+            
+            
+            
             //TODO: move to config
-            int pageSize = 20;
+            
             // make model
             SalesModel model = new SalesModel
             {
@@ -44,11 +46,45 @@ namespace T5.Controllers
             };
             PageInfo pageInfo = new PageInfo
                 {PageNumber = page, PageSize = pageSize, ItemsCount = _context.Sales.ToList().Count};
-            PageIndexViewModel<Sale> ivm = new PageIndexViewModel<Sale> {PageInfo = pageInfo, Items = model.Sales};
             model.PageInfo = pageInfo;
+            if (Request.IsAjaxRequest())
+            {
+                
+                return PartialView("_PageNumberButtonGroup", pageInfo);
+            }
 
             return View(model);
             //return Json(_context.Sales.ToArray(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UpdatePageInfo(string jsonData)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            int page = serializer.Deserialize<int>(jsonData);
+            var sales = _context.Sales
+                //.Where(s => DateTime.Compare())
+                .OrderBy(s => s.DateTime)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()
+                .Select(
+                    s => new Sale
+                    {
+                        Id = s.Id,
+                        //TODO: check if it can be replace by Client = s.Client etc.
+                        Client = new Client
+                        {
+                            Id = s.Client.Id, FirstName = s.Client.FirstName, LastName = s.Client.LastName
+                        },
+                        Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
+                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
+                        DateTime = s.DateTime,
+                        DateTimeString = s.DateTime.ToString(CultureInfo.InvariantCulture)
+                    }
+                ).ToArray();
+            PageInfo pageInfo = new PageInfo
+                {PageNumber = page, PageSize = pageSize, ItemsCount = _context.Sales.ToList().Count};
+            return PartialView("_PageNumberButtonGroup", pageInfo);
         }
 
         public JsonResult UpdateSales(string jsonData)
@@ -60,9 +96,6 @@ namespace T5.Controllers
             /*Manager manager;
             DateTime fromDateTime;
             DateTime toDateTime;*/
-            int pageSize = 25;
-
-
             var sales = _context.Sales
                 //.Where(s => DateTime.Compare())
                 .OrderBy(s => s.DateTime)

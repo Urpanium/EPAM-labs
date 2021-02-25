@@ -25,24 +25,50 @@
         </tr>
     </table>
 </div>
+
+@Html.Partial("_PageNumberButtonGroup", Model.PageInfo)
+@*
 <div class="btn-group">
     @Html.PageLinks(Model.PageInfo, x => Url.Action("UpdateSales", new {page = x}))
 </div>
+*@
 
 @*TODO: create 2 scripts: for pagination and for diagram drawing*@
 
 @section scripts {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @*LIST UPDATE*@
     <script type="text/javascript">
     $(document).ready(function () {
+        
         $('#managersDropDownList').change(function (e){
-            getEmployeeUsingAjax();
+            getPageUsingAjax();
         });
-        getEmployeeUsingAjax();
+        getPageUsingAjax();
+        //updatePageInfo();
         });
+    function updatePageInfo(pageNumber = 1)
+    {
+        var jsonData = JSON.stringify(pageNumber);
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdatePageInfo", "Statistics")',
+            data: {jsonData},
+            dataType: 'html',
+            success: function (data){
+                    $('#pages-info').html(data);
+                },
+            error: function (jQXHR, textStatus, errorThrown)
+            {
+                console.log("An error occurred while trying to contact the server: " + jQXHR.status + " " + textStatus + " " + errorThrown);                
+            }
+        });
+    }
     
-    function getEmployeeUsingAjax(pageNumber = 1) {           
+    function getPageUsingAjax(pageNumber = 1) { 
+        
         var jsonData = JSON.stringify(pageNumber);
             $.ajax({
                 type: 'GET',
@@ -51,6 +77,7 @@
                 dataType: 'json',
                 success: function (data) {
                     var rows = '<table id="sales-table" class="table"><tr><th>Id</th><th>DateTime</th><th>Client</th><th>Manager</th></tr>';
+                    
                     $.each(data, function (i, item) {
                         rows += "<tr>"
                                   + "<td>" + item.Id + "</td>"
@@ -62,6 +89,7 @@
                     rows += '</table';
                     //alert($('#sales-table-container').innerHTML);
                     $('#sales-table-container').html(rows);
+                    updatePageInfo(pageNumber);
                     //alert($('#sales-table-container').innerHTML);
                     //$('#sales-table').append(rows);
                  },

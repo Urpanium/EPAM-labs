@@ -17,7 +17,7 @@ namespace T5.Helpers
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("button", "");
                 tag.MergeAttribute("type", "button");
-                tag.MergeAttribute("onclick", $"getEmployeeUsingAjax({i})");
+                tag.MergeAttribute("onclick", $"getPageUsingAjax({i})");
                 tag.GenerateId($"button_page_{i}");
                 tag.InnerHtml = i.ToString();
 
