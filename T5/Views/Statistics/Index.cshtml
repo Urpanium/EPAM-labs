@@ -44,9 +44,9 @@
     $(document).ready(function () {
         
         $('#managersDropDownList').change(function (e){
-            getPageUsingAjax();
+            updateSalesTable();
         });
-        getPageUsingAjax();
+        updateSalesTable();
         //updatePageInfo();
         });
     function updatePageInfo(pageNumber = 1)
@@ -67,7 +67,7 @@
         });
     }
     
-    function getPageUsingAjax(pageNumber = 1) { 
+    function updateSalesTable(pageNumber = 1) { 
         
         var jsonData = JSON.stringify(pageNumber);
             $.ajax({

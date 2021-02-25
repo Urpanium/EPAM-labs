@@ -12,7 +12,7 @@ namespace T5.Controllers
     public class StatisticsController : Controller
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
-        private readonly int pageSize = 20;
+        private readonly int pageSize = 25;
         public ActionResult Index(int page = 1)
         {
             
@@ -87,6 +87,11 @@ namespace T5.Controllers
             return PartialView("_PageNumberButtonGroup", pageInfo);
         }
 
+        public ActionResult UpdateSalesTable(string jsonData)
+        {
+            return PartialView("_SalesTable");
+        }
+
         public JsonResult UpdateSales(string jsonData)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -98,7 +103,7 @@ namespace T5.Controllers
             DateTime toDateTime;*/
             var sales = _context.Sales
                 //.Where(s => DateTime.Compare())
-                .OrderBy(s => s.DateTime)
+                .OrderBy(s => s.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList()

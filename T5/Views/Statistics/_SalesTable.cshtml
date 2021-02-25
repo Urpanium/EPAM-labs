@@ -1,0 +1,21 @@
+﻿@model IEnumerable<T5.Stuff.Sale>
+
+<div id="sales-table-container">
+    <table id="sales-table" class="table">
+        <tr>
+            <th>Id</th>
+            <th>DateTime</th>
+            <th>Client</th>
+            <th>Manager</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <th>@item.DateTime</th>
+                <th>@item.Client.FirstName @item.Client.LastName</th>
+                <th>@item.Manager.LastName</th>
+            </tr>
+        }   
+        </table>
+</div>
