@@ -1,8 +1,8 @@
-﻿@model T5.Models.SalesModel
+﻿@using T5.Helpers
+@model T5.Models.SalesModel
 @{
     ViewBag.Title = "Sales";
 }
-
 
 
 <h2>Sales:</h2>
@@ -15,14 +15,19 @@
 
 <img src="@Url.Action("GetChart")" alt="Chart"/>
 
-<table id="salesTable" class="table">
-    <tr>
-        <th>Id</th>
-        <th>DateTime</th>
-        <th>Client</th>
-        <th>Manager</th>
-    </tr>
-</table>
+<div id="sales-table-container">
+    <table id="sales-table" class="table">
+        <tr>
+            <th>Id</th>
+            <th>DateTime</th>
+            <th>Client</th>
+            <th>Manager</th>
+        </tr>
+    </table>
+</div>
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("UpdateSales", new {page = x}))
+</div>
 
 @*TODO: create 2 scripts: for pagination and for diagram drawing*@
 
@@ -31,19 +36,21 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {
-        $('managersDropDownList').change(function (e){
-            GetEmployeeUsingAjax();
+        $('#managersDropDownList').change(function (e){
+            getEmployeeUsingAjax();
         });
-        GetEmployeeUsingAjax();
+        getEmployeeUsingAjax();
         });
-    function GetEmployeeUsingAjax() {           
+    
+    function getEmployeeUsingAjax(pageNumber = 1) {           
+        var jsonData = JSON.stringify(pageNumber);
             $.ajax({
                 type: 'GET',
-                url: '@Url.Action("FilteredSales")',
-                data: { },
+                url: '@Url.Action("UpdateSales")',
+                data: {jsonData},
                 dataType: 'json',
                 success: function (data) {
-                    var rows = '';
+                    var rows = '<table id="sales-table" class="table"><tr><th>Id</th><th>DateTime</th><th>Client</th><th>Manager</th></tr>';
                     $.each(data, function (i, item) {
                         rows += "<tr>"
                                   + "<td>" + item.Id + "</td>"
@@ -52,7 +59,11 @@
                                   + "<td>" + item.Manager.LastName + "</td>"
                                   + "</tr>";
                     });
-                    $('#salesTable').append(rows);
+                    rows += '</table';
+                    //alert($('#sales-table-container').innerHTML);
+                    $('#sales-table-container').html(rows);
+                    //alert($('#sales-table-container').innerHTML);
+                    //$('#sales-table').append(rows);
                  },
                 error: function (emp) {
                     alert('error');

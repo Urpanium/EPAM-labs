@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using T5.Models;
 using T5.Stuff;
 
@@ -17,14 +18,10 @@ namespace T5.Controllers
         {
             //TODO: move to config
             int pageSize = 20;
-            IEnumerable<Sale> salesForPage = _context.Sales.Skip((page - 1) * pageSize).Take(pageSize);
-            PageInfo pageInfo = new PageInfo
-                {PageNumber = page, PageSize = pageSize, ItemsCount = _context.Sales.ToList().Count};
-            PageIndexViewModel<Sale> ivm = new PageIndexViewModel<Sale> {PageInfo = pageInfo, Items = salesForPage};
             // make model
             SalesModel model = new SalesModel
             {
-                /*Sales = _context.Sales
+                Sales = _context.Sales
                     .ToList()
                     .Select(
                         s => new Sale
@@ -39,24 +36,38 @@ namespace T5.Controllers
                             Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
                             DateTime = s.DateTime
                         }
-                    ),*/
-                Sales = salesForPage,
+                    ),
+                //Sales = salesForPage,
                 Managers = _context.Managers,
                 Clients = _context.Clients,
                 Products = _context.Products
             };
+            PageInfo pageInfo = new PageInfo
+                {PageNumber = page, PageSize = pageSize, ItemsCount = _context.Sales.ToList().Count};
+            PageIndexViewModel<Sale> ivm = new PageIndexViewModel<Sale> {PageInfo = pageInfo, Items = model.Sales};
+            model.PageInfo = pageInfo;
 
             return View(model);
             //return Json(_context.Sales.ToArray(), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult FilteredSales()
+        public JsonResult UpdateSales(string jsonData)
         {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            int page = serializer.Deserialize<int>(jsonData);
             //TODO: get values from view
+
             /*Manager manager;
             DateTime fromDateTime;
             DateTime toDateTime;*/
+            int pageSize = 25;
+
+
             var sales = _context.Sales
+                //.Where(s => DateTime.Compare())
+                .OrderBy(s => s.DateTime)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToList()
                 .Select(
                     s => new Sale

@@ -10,10 +10,12 @@ namespace T5.Models
     {
         
 
-        public IEnumerable<Sale> Sales;
-        public IEnumerable<Manager> Managers;
-        public IEnumerable<Product> Products;
-        public IEnumerable<Client> Clients;
+        public IEnumerable<Sale> Sales { get; set; }
+        public IEnumerable<Manager> Managers { get; set; }
+        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<Client> Clients { get; set; }
+        
+        public PageInfo PageInfo { get; set; }
 
         public SalesModel()
         {
