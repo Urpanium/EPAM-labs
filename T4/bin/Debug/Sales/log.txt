@@ -240,3 +240,42 @@
 2021-02-24 21:54:54.777 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
 2021-02-24 21:54:54.778 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
 2021-02-24 21:54:54.808 +03:00 [INF] Successfully pushed file from Vasyanske
+2021-02-25 18:06:46.958 +03:00 [INF] Creating client
+2021-02-25 18:06:47.003 +03:00 [INF] Starting...
+2021-02-25 18:06:47.196 +03:00 [INF] Watching C:\Users\maksi\Desktop\Projects\EPAM\EPAM\T4\bin\Debug\Sales
+2021-02-25 18:06:47.197 +03:00 [INF] Started. Press any key to stop
+2021-02-25 18:06:59.362 +03:00 [INF] Directory content changed. Processing...
+2021-02-25 18:06:59.651 +03:00 [INF] Sales are ready. Pushing...
+2021-02-25 18:07:04.441 +03:00 [INF] Manager existence: False
+2021-02-25 18:07:04.471 +03:00 [INF] Manager existence: False
+2021-02-25 18:07:04.473 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-25 18:07:04.475 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-25 18:07:04.890 +03:00 [INF] Successfully pushed file from Vasyanske
+2021-02-25 18:07:09.638 +03:00 [INF] Directory content changed. Processing...
+2021-02-25 18:07:09.651 +03:00 [INF] Sales are ready. Pushing...
+2021-02-25 18:07:09.656 +03:00 [INF] Manager existence: False
+2021-02-25 18:07:09.660 +03:00 [INF] Manager existence: False
+2021-02-25 18:07:09.665 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-25 18:07:09.667 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-25 18:07:09.734 +03:00 [INF] Successfully pushed file from Pedro
+2021-02-25 18:07:13.437 +03:00 [INF] Directory content changed. Processing...
+2021-02-25 18:07:13.462 +03:00 [INF] Sales are ready. Pushing...
+2021-02-25 18:07:13.468 +03:00 [INF] Manager existence: False
+2021-02-25 18:07:13.470 +03:00 [INF] Manager existence: False
+2021-02-25 18:07:13.488 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-25 18:07:13.493 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-25 18:07:13.560 +03:00 [INF] Successfully pushed file from Ivanov
+2021-02-25 18:07:32.030 +03:00 [INF] Directory content changed. Processing...
+2021-02-25 18:07:32.042 +03:00 [INF] Sales are ready. Pushing...
+2021-02-25 18:07:32.053 +03:00 [INF] Manager existence: True
+2021-02-25 18:07:32.056 +03:00 [INF] Manager existence: True
+2021-02-25 18:07:32.061 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-25 18:07:32.065 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-25 18:07:32.125 +03:00 [INF] Successfully pushed file from Ivanov
+2021-02-25 18:14:24.084 +03:00 [INF] Directory content changed. Processing...
+2021-02-25 18:14:24.090 +03:00 [INF] Sales are ready. Pushing...
+2021-02-25 18:14:24.101 +03:00 [INF] Manager existence: False
+2021-02-25 18:14:24.104 +03:00 [INF] Manager existence: False
+2021-02-25 18:14:24.105 +03:00 [INF] Connection String: data source=(localdb)\MSSQLLocalDB;Initial Catalog=market_web;Integrated Security=True;
+2021-02-25 18:14:24.107 +03:00 [INF] Data Source: (localdb)\MSSQLLocalDB
+2021-02-25 18:14:24.166 +03:00 [INF] Successfully pushed file from Neivanov

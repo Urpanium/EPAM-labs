@@ -12,9 +12,7 @@ namespace T5.Stuff
         public virtual Manager Manager { get; set; }
         public virtual Product Product { get; set; }
         public DateTime DateTime { get; set; }
-
-        [NotMapped]
-        public string DateTimeString { get; set; }
+        
 
         public override string ToString()
         {

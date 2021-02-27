@@ -188,6 +188,9 @@
     <Compile Include="Models\SalesModel.cs" />
     <Compile Include="Models\StatisticsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\FilterModel.cs" />
+    <Compile Include="Service\IRepository.cs" />
+    <Compile Include="Service\Repository\Repository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Stuff\ApplicationRole.cs" />
     <Compile Include="Stuff\ApplicationRoleManager.cs" />

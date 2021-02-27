@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using T5.Models;
+using T5.Service;
 using T5.Stuff;
 
 namespace T5.Controllers
@@ -13,13 +15,11 @@ namespace T5.Controllers
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
         private readonly int pageSize = 25;
+
         public ActionResult Index(int page = 1)
         {
-            
-            
-            
             //TODO: move to config
-            
+
             // make model
             SalesModel model = new SalesModel
             {
@@ -49,7 +49,6 @@ namespace T5.Controllers
             model.PageInfo = pageInfo;
             if (Request.IsAjaxRequest())
             {
-                
                 return PartialView("_PageNumberButtonGroup", pageInfo);
             }
 
@@ -61,27 +60,6 @@ namespace T5.Controllers
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             int page = serializer.Deserialize<int>(jsonData);
-            var sales = _context.Sales
-                //.Where(s => DateTime.Compare())
-                .OrderBy(s => s.DateTime)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList()
-                .Select(
-                    s => new Sale
-                    {
-                        Id = s.Id,
-                        //TODO: check if it can be replace by Client = s.Client etc.
-                        Client = new Client
-                        {
-                            Id = s.Client.Id, FirstName = s.Client.FirstName, LastName = s.Client.LastName
-                        },
-                        Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
-                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
-                        DateTime = s.DateTime,
-                        DateTimeString = s.DateTime.ToString(CultureInfo.InvariantCulture)
-                    }
-                ).ToArray();
             PageInfo pageInfo = new PageInfo
                 {PageNumber = page, PageSize = pageSize, ItemsCount = _context.Sales.ToList().Count};
             return PartialView("_PageNumberButtonGroup", pageInfo);
@@ -101,74 +79,40 @@ namespace T5.Controllers
                     s => new Sale
                     {
                         Id = s.Id,
-                        //TODO: check if it can be replace by Client = s.Client etc.
                         Client = new Client
                         {
                             Id = s.Client.Id, FirstName = s.Client.FirstName, LastName = s.Client.LastName
                         },
                         Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
-                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
+                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name},
                         DateTime = s.DateTime,
-                        DateTimeString = s.DateTime.ToString(CultureInfo.InvariantCulture)
                     }
                 ).ToArray();
             return PartialView("_SalesTable", sales);
         }
 
-        //TODO: pass filter parameters in jsonData
-        public JsonResult UpdateSales(string jsonData)
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            int page = serializer.Deserialize<int>(jsonData);
-            //TODO: get values from view
+        
 
-            /*Manager manager;
-            DateTime fromDateTime;
-            DateTime toDateTime;*/
-            var sales = _context.Sales
-                //.Where(s => DateTime.Compare())
-                .OrderBy(s => s.Id)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList()
-                .Select(
-                    s => new Sale
-                    {
-                        Id = s.Id,
-                        //TODO: check if it can be replace by Client = s.Client etc.
-                        Client = new Client
-                        {
-                            Id = s.Client.Id, FirstName = s.Client.FirstName, LastName = s.Client.LastName
-                        },
-                        Manager = new Manager {Id = s.Manager.Id, LastName = s.Manager.LastName},
-                        Product = new Product {Id = s.Product.Id, Name = s.Product.Name,},
-                        DateTime = s.DateTime,
-                        DateTimeString = s.DateTime.ToString(CultureInfo.InvariantCulture)
-                    }
-                ).ToArray();
-            return Json(sales, JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult GetChart()
         {
-            List<Manager> managersList = _context.Managers.ToList();
-            List<string> managers = new List<string>();
+            //TODO: rewrite
+            List<string> managers = _context.Managers.Select(m => m.LastName).ToList();
             List<int> sales = new List<int>();
-
-            for (int i = 0; i < managersList.Count; i++)
+            for (int i = 0; i < managers.Count; i++)
             {
-                Manager manager = managersList[i];
-                managers.Add(manager.LastName);
+                string lastName = managers[i];
+                managers.Add(lastName);
                 sales.Add(0);
-                sales[sales.Count - 1] += _context.Sales.Where(s => s.Manager.LastName.Equals(manager.LastName))
+                sales[sales.Count - 1] += _context.Sales.Where(s => s.Manager.LastName.Equals(lastName))
                     .ToList()
                     .Count;
             }
 
-            byte[] chart = new Chart(width: 800, height: 600)
+            byte[] chart = new Chart(800, 600)
                 .AddTitle("Managers Efficiency")
                 .AddSeries(
-                    name: "Employee",
+                    name: "Manager",
                     xValue: managers,
                     yValues: sales)
                 .GetBytes();

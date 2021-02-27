@@ -1,79 +1,100 @@
-﻿@using T5.Helpers
-@model T5.Models.SalesModel
+﻿@model T5.Models.SalesModel
 @{
     ViewBag.Title = "Sales";
 }
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 
 <h2>Sales:</h2>
 
 <p>
-    @Html.DropDownList("managersDropDownList", new SelectList(Model.Managers.Select(m => m.LastName)), "All managers")
-    <input type="datetime-local" value="@DateTime.MinValue" style="width: 100px;" textmode="Date" id="FromDate"/>
-    <input type="datetime-local" value="@DateTime.MaxValue" style="width: 100px;" textmode="Date" id="ToDate"/>
+    @Html.DropDownList("managers-dropdown-list", new SelectList(Model.Managers.Select(m => m.LastName)), "All managers")
+    <input name="from-date-picker-name" onchange="fromDateChanged();" type="datetime-local" value="@DateTime.MinValue" style="width: 100px;" textmode="Date" id="from-date-picker"/>
+    <input name="to-date-picker-name" onchange="toDateChanged();" type="datetime-local" value="@DateTime.MaxValue" style="width: 100px;" textmode="Date" id="to-date-picker"/>
 </p>
 
-<img src="@Url.Action("GetChart")" alt="Chart"/>
-
-<div id="sales-table-container">
-    <table id="sales-table" class="table">
-        <tr>
-            <th>Id</th>
-            <th>DateTime</th>
-            <th>Client</th>
-            <th>Manager</th>
-        </tr>
-    </table>
-</div>
-
+<img src="@Url.Action("GetChart")" alt="Chart" class="center"/>
+@Html.Partial("_SalesTable", Model.Sales)
 @Html.Partial("_PageNumberButtonGroup", Model.PageInfo)
-@*
-<div class="btn-group">
-    @Html.PageLinks(Model.PageInfo, x => Url.Action("UpdateSales", new {page = x}))
-</div>
-*@
-
-@*TODO: create 2 scripts: for pagination and for diagram drawing*@
 
 @section scripts {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     @*LIST UPDATE*@
     <script type="text/javascript">
     $(document).ready(function () {
         
-        $('#managersDropDownList').change(function (e){
+        $('#managers-dropdown-list').change(function (){
             updateSalesTable();
         });
+        
         updateSalesTable();
-        //updatePageInfo();
-        });
-    function updatePageInfo(pageNumber = 1)
+    });
+    
+    function fromDateChanged()
     {
-        var jsonData = JSON.stringify(pageNumber);
+        updateSalesTable();
+    }
+        
+    function toDateChanged()
+    {
+        updateSalesTable();
+        /*jQuery.ajax({
+                url: 'Url.Action("UpdateSalesTable")',
+                type: 'POST',
+                data: $('#to-date-picker').serialize(),
+                success: function (response) {
+                    //TODO: updateSalesTable
+                }
+            });*/
+    }
+    
+    function getFilterParameters()
+    {
+            return {
+                ManagerLastName: $('#managers-dropdown-list').val(),
+                FromDate: $('#from-date-picker').datepicker('getDate'),
+                ToDate: $('#to-date-picker').datepicker('getDate'),
+                PageNumber: 0,
+            };
+    }
+    
+    function updatePageInfo(filter)
+    {
+        //var jsonData = JSON.stringify(pageNumber);
         $.ajax({
             type: "POST",
-            url: '@Url.Action("UpdatePageInfo", "Statistics")',
-            data: {jsonData},
+            url: '@Url.Action("UpdatePageInfo")',
+            data: {filter},
             dataType: 'html',
             success: function (data){
                     $('#pages-info').html(data);
-                },
+                }, 
             error: function (jQXHR, textStatus, errorThrown)
             {
-                console.log("An error occurred while trying to contact the server: " + jQXHR.status + " " + textStatus + " " + errorThrown);                
+                console.log('An error occurred while trying to contact the server: ' + jQXHR.status + ' ' + textStatus + ' ' + errorThrown);                
             }
         });
     }
     
     function updateSalesTable(pageNumber = 1) { 
         
-        var jsonData = JSON.stringify(pageNumber);
+        var filter = getFilterParameters();
+        filter.PageNumber = pageNumber;
+        //var jsonData = JSON.stringify(pageNumber);
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("UpdateSalesTable")',
-                data: {jsonData},
+                data: {filter},
                 dataType: 'html',
                 success: function (data) {
                     $('#sales-table-container').html(data);

@@ -9,7 +9,7 @@ namespace T5.Helpers
     public static class PagingHelpers
     {
         public static MvcHtmlString PageLinks(this HtmlHelper html,
-            PageInfo pageInfo, Func<int, string> pageUrl)
+            PageInfo pageInfo)
         {
             StringBuilder result = new StringBuilder();
             for (int i = 1; i <= pageInfo.PagesCount; i++)

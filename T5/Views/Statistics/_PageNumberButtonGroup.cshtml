@@ -2,5 +2,5 @@
 @model T5.Models.PageInfo
 
 <div id="pages-info" class="btn-group">
-    @Html.PageLinks(Model, x => Url.Action("UpdateSales", new {page = x}))
+    @Html.PageLinks(Model)
 </div>
