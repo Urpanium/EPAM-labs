@@ -1,4 +1,5 @@
 ﻿@model T5.Models.SalesModel
+
 @{
     ViewBag.Title = "Sales";
 }
@@ -16,8 +17,9 @@ img {
 
 <p>
     @Html.DropDownList("managers-dropdown-list", new SelectList(Model.Managers.Select(m => m.LastName)), "All managers")
-    <input name="from-date-picker-name" onchange="fromDateChanged();" type="datetime-local" value="@DateTime.MinValue" style="width: 100px;" textmode="Date" id="from-date-picker"/>
-    <input name="to-date-picker-name" onchange="toDateChanged();" type="datetime-local" value="@DateTime.MaxValue" style="width: 100px;" textmode="Date" id="to-date-picker"/>
+    <input name="from-date-picker" onchange="updateSalesTable();" type="date" value="@DateTime.MinValue.ToString("yyyy-MM-dd")" textmode="Date" id="from-date-picker"/>
+    <input name="to-date-picker" onchange="updateSalesTable();" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" textmode="Date" id="to-date-picker"/>
+
 </p>
 
 <img src="@Url.Action("GetChart")" alt="Chart" class="center"/>
@@ -28,7 +30,7 @@ img {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     @*LIST UPDATE*@
     <script type="text/javascript">
     $(document).ready(function () {
@@ -36,7 +38,6 @@ img {
         $('#managers-dropdown-list').change(function (){
             updateSalesTable();
         });
-        
         updateSalesTable();
     });
     
@@ -61,20 +62,20 @@ img {
     function getFilterParameters()
     {
             return {
-                ManagerLastName: $('#managers-dropdown-list').val(),
-                FromDate: $('#from-date-picker').datepicker('getDate'),
-                ToDate: $('#to-date-picker').datepicker('getDate'),
+                ManagerLastName: $('#managers-dropdown-list :selected').text(),
+                FromDateString: $('#from-date-picker').val(),
+                ToDateString: $('#to-date-picker').val(),
                 PageNumber: 0,
             };
     }
     
-    function updatePageInfo(filter)
+    function updatePageInfo(pageNumber = 1)
     {
-        //var jsonData = JSON.stringify(pageNumber);
+        var jsonData = JSON.stringify(pageNumber);
         $.ajax({
-            type: "POST",
+            type: 'POST',
             url: '@Url.Action("UpdatePageInfo")',
-            data: {filter},
+            data: {jsonData},
             dataType: 'html',
             success: function (data){
                     $('#pages-info').html(data);
@@ -87,23 +88,23 @@ img {
     }
     
     function updateSalesTable(pageNumber = 1) { 
-        
-        var filter = getFilterParameters();
+        const filter = getFilterParameters();
         filter.PageNumber = pageNumber;
+        console.log("Dates: " + filter.FromDate + " " + filter.ToDate);
         //var jsonData = JSON.stringify(pageNumber);
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("UpdateSalesTable")',
-                data: {filter},
-                dataType: 'html',
-                success: function (data) {
-                    $('#sales-table-container').html(data);
-                    updatePageInfo(pageNumber);
-                 },
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("UpdateSalesTable")',
+            data: filter,
+            //dataType: 'html',
+            success: function (data) {
+                $('#sales-table-container').html(data);
+                updatePageInfo(pageNumber);
+            },
                 error: function (jQXHR, textStatus, errorThrown){
-                    console.log('An error occurred while trying to contact the server for Sales: ' + jQXHR.status + ' ' + textStatus + ' ' + errorThrown);                
-                }
-            });
-        }    
+                console.log('An error occurred while trying to contact the server for Sales: ' + jQXHR.status + ' ' + textStatus + ' ' + errorThrown);                
+            }
+        });
+    }    
     </script>
 }

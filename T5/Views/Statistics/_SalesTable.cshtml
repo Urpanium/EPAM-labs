@@ -6,7 +6,9 @@
             <th>Id</th>
             <th>DateTime</th>
             <th>Client</th>
+            <th>Product</th>
             <th>Manager</th>
+            @*TODO: role dependent shit must go here*@
         </tr>
         @foreach (var item in Model)
         {
@@ -14,7 +16,9 @@
                 <th>@item.Id</th>
                 <th>@item.DateTime</th>
                 <th>@item.Client.FirstName @item.Client.LastName</th>
+                <th>@item.Product.Name</th>
                 <th>@item.Manager.LastName</th>
+                @*TODO: and here*@
             </tr>
         }   
         </table>

@@ -1,9 +1,7 @@
 ﻿using System.Text;
 using System.Web.Mvc;
-using Antlr.Runtime.Misc;
 using T5.Models;
 
-//.............................
 namespace T5.Helpers
 {
     public static class PagingHelpers
@@ -17,8 +15,8 @@ namespace T5.Helpers
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("button", "");
                 tag.MergeAttribute("type", "button");
-                tag.MergeAttribute("onclick", $"updateSalesTable({i})");
-                tag.GenerateId($"button_page_{i}");
+                tag.MergeAttribute("onclick", $"updateSalesTable({i});");
+                //tag.GenerateId($"button_page_{i}");
                 tag.InnerHtml = i.ToString();
 
                 if (i == pageInfo.PageNumber)
