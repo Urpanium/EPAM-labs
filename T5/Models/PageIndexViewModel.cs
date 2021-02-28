@@ -15,9 +15,6 @@ namespace T5.Models
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public int ItemsCount { get; set; }
-        public int PagesCount
-        {
-            get { return (int)Math.Ceiling((decimal)ItemsCount / PageSize); }
-        }
+        public int PagesCount => (int)Math.Ceiling((decimal)ItemsCount / PageSize);
     }
 }

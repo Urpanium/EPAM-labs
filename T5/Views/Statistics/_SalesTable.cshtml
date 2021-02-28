@@ -1,5 +1,5 @@
-﻿@model IEnumerable<T5.Stuff.Sale>
-
+﻿@using System.Web.Mvc.Ajax
+@model IEnumerable<T5.ModelsLayer.Sale>
 <div id="sales-table-container">
     <table class="table table-bordered text-center">
         <tr>
@@ -8,7 +8,10 @@
             <th>Client</th>
             <th>Product</th>
             <th>Manager</th>
-            @*TODO: role dependent shit must go here*@
+            @if (User.IsInRole("admin"))
+            {
+                @:<th>Actions</th>
+            }
         </tr>
         @foreach (var item in Model)
         {
@@ -18,8 +21,11 @@
                 <th>@item.Client.FirstName @item.Client.LastName</th>
                 <th>@item.Product.Name</th>
                 <th>@item.Manager.LastName</th>
-                @*TODO: and here*@
+                @if (User.IsInRole("admin"))
+                {
+                    @:<th>@Html.ActionLink("Edit", "EditSale", new {id = item.Id}) | @Ajax.ActionLink("Delete", "DeleteSale", new {id = item.Id}, new AjaxOptions {UpdateTargetId = "sales-table-container"})</th>
+                }
             </tr>
-        }   
-        </table>
+        }
+    </table>
 </div>

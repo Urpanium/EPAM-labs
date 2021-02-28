@@ -1,0 +1,39 @@
+﻿@model T5.ModelsLayer.Sale
+
+@{
+    ViewBag.Title = "Sales";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<h2>Edit sale</h2>
+ 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+ 
+    <div>
+        @Html.ValidationSummary(true, "")
+        @Html.HiddenFor(model => model.Id)
+        
+        <p>Client First Name: @Html.EditorFor(model => model.Client.FirstName)</p>
+        @Html.ValidationMessageFor(model => model.Client.FirstName, "", new {@class = "text-danger"})
+        
+        <p>Client Last Name: @Html.EditorFor(model => model.Client.LastName)</p>
+        @Html.ValidationMessageFor(model => model.Client.LastName, "", new {@class = "text-danger"})
+        
+        <p>Manager Last Name: @Html.EditorFor(model => model.Manager.LastName)</p>
+        @Html.ValidationMessageFor(model => model.Manager.LastName, "", new {@class = "text-danger"})
+        
+        <p>Product Name:  @Html.EditorFor(model => model.Product.Name)</p>
+        @Html.ValidationMessageFor(model => model.Product.Name, "", new {@class = "text-danger"})
+        
+        <p>Product Price:  @Html.EditorFor(model => model.Product.Price)</p>
+                @Html.ValidationMessageFor(model => model.Product.Price, "", new {@class = "text-danger"})
+                
+        <p>Date: @Html.EditorFor(model => model.DateTime)</p>
+        @Html.ValidationMessageFor(model => model.DateTime, "", new {@class = "text-danger"})
+        
+        <p><input type="submit" value="Change"/></p>
+    </div>
+}

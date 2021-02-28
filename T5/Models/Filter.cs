@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace T5.Models
+﻿namespace T5.Models
 {
-    public class FilterModel
+    public class Filter
     {
         public string ManagerLastName { get; set; }
         

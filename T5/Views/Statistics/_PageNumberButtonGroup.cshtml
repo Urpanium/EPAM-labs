@@ -1,6 +1,9 @@
-﻿@using T5.Helpers
-@model T5.Models.PageInfo
+﻿@model T5.Models.PageInfo
 
 <div id="pages-info" class="btn-group">
-    @Html.PageLinks(Model)
+    @*@Html.PageLinks(Model)*@
+    @for (int i = 1; i <= Model.PagesCount; i++)
+    {
+        <button type="button" onclick="updateSalesTable(@i);" class="@("btn btn-default " + (Model.PageNumber == i ? "selected btn-primary" : ""))">@i</button>
+    }
 </div>

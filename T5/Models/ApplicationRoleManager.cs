@@ -2,9 +2,8 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using T5.Models;
 
-namespace T5.Stuff
+namespace T5.Models
 {
     public class ApplicationRoleManager : RoleManager<ApplicationRole>
     {

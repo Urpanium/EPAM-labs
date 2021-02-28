@@ -1,4 +1,4 @@
-﻿namespace T5.Stuff
+﻿namespace T5.ModelsLayer
 {
     public class Manager
     {

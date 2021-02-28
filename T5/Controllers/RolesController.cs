@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using T5.Models;
-using T5.Stuff;
 
 namespace T5.Controllers
 {
@@ -73,8 +71,7 @@ namespace T5.Controllers
             ApplicationRole role = await RoleManager.FindByIdAsync(id);
             if (role != null)
             {
-                IdentityResult result = await RoleManager.DeleteAsync(role);
-                //TODO: check result
+                await RoleManager.DeleteAsync(role);
             }
 
             return RedirectToAction("Index");
