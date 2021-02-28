@@ -164,7 +164,6 @@ namespace T5.Controllers
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
-            // Отправка SMS через поставщик SMS для проверки номера телефона
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
@@ -188,7 +187,6 @@ namespace T5.Controllers
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
-            // Это сообщение означает наличие ошибки; повторное отображение формы
             ModelState.AddModelError("", "Не удалось проверить телефон");
             return View(model);
         }
@@ -270,8 +268,7 @@ namespace T5.Controllers
                 }
                 AddErrors(result);
             }
-
-            // Это сообщение означает наличие ошибки; повторное отображение формы
+            
             return View(model);
         }
 

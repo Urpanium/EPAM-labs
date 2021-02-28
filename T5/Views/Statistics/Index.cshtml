@@ -48,14 +48,6 @@ img {
     function toDateChanged()
     {
         updateSalesTable();
-        /*jQuery.ajax({
-                url: 'Url.Action("UpdateSalesTable")',
-                type: 'POST',
-                data: $('#to-date-picker').serialize(),
-                success: function (response) {
-                    //TODO: updateSalesTable
-                }
-            });*/
     }
     
     function getFilterParameters()
@@ -89,12 +81,11 @@ img {
         const filter = getFilterParameters();
         filter.PageNumber = pageNumber;
         console.log("Dates: " + filter.FromDate + " " + filter.ToDate);
-        //var jsonData = JSON.stringify(pageNumber);
+        
         $.ajax({
             type: 'GET',
             url: '@Url.Action("UpdateSalesTable")',
             data: filter,
-            //dataType: 'html',
             success: function (data) {
                 $('#sales-table-container').html(data);
                 updatePageInfo(filter);
