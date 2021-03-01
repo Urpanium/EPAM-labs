@@ -83,6 +83,7 @@ namespace T5.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteSale(int id)
         {
             try
